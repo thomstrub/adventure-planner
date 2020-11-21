@@ -18,7 +18,8 @@ require('./config/database');
 // configure Passport
 require('./config/passport');
 
-
+//require our routes
+var indexRoutes = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +40,12 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// middleware to avoid having to pass user: req.user every time a view is rendered
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+})
 
 
 // mount all routes with appropriate base paths
