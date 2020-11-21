@@ -18,3 +18,7 @@
 .collection-item form {
   margin-top: -5px;
 }
+
+#logo {
+  height: .5vh;
+}
