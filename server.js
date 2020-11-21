@@ -20,6 +20,7 @@ require('./config/passport');
 
 //require our routes
 var indexRoutes = require('./routes/index');
+var adventuresRoutes = require('./routes/adventures');
 
 console.log(process.env, "env --------------------")
 
@@ -51,7 +52,9 @@ app.use(function (req, res, next) {
 
 
 // mount all routes with appropriate base paths
+app.use('/', adventuresRoutes);
 app.use('/', indexRoutes);
+
 
 
 // invalid request, send 404 page
