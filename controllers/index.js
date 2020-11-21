@@ -6,5 +6,5 @@ module.exports = {
 
 function index(req, res, next) {
     console.log(req.query, "<------- req.query");
-    res.render('students/index')
+    res.render('index');
 }

@@ -21,6 +21,8 @@ require('./config/passport');
 //require our routes
 var indexRoutes = require('./routes/index');
 
+console.log(process.env, "env --------------------")
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
