@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
+<%- include('./partials/header.ejs')%>
 <body>
-    <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper">
-            <a href="" class="brand-logo left">SEI Student Fun Facts</a>
-            <ul class="right">
-              <li>
-                <% if (user) { %>
-                  <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                <% } else { %>
-                  <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-                <% } %>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+    <%- include('./partials/nav.ejs')%>
 
-
-    Hi!
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="jumbotron">
+            <h1 class="display-3">Login to Plan Your Next Adventure!</h1>
+            <a class= "btn btn-primary" href="/auth/google"><i ></i>Login with Google</a>
+        </div>
+    </div>
+</div>
+    
 </body>
+<%- include('./partials/footer.ejs')%>
 </html>
