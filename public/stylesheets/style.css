@@ -22,3 +22,20 @@
 #logo {
   height: .5vh;
 }
+
+.container #login{
+  margin-top: calc(20px + 5vh);
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+      "header header header"
+      ". login ."
+      "footer footer footer";
+}
+
+.login {
+  grid-area: login;
+  margin: calc(10px + .5vh);
+  padding: calc(20px + 2vh)
+}

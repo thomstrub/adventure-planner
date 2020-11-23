@@ -2,7 +2,8 @@ const User = require('../models/user');
 
 module.exports = {
     index,
-    isLoggedIn
+    isLoggedIn,
+    new: newAdventure
 }
 const nav = ['Find Adventure', 'Add Adventure', 'About'];
 
@@ -21,4 +22,10 @@ function isLoggedIn(req, res, next){
     } else {
         res.redirect('/auth/google');
     }
+}
+function newAdventure(req, res) {
+    res.render('adventures/new', {
+        title: 'Plan an Adventure',
+        navBar: nav
+    })
 }

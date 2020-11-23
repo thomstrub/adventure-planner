@@ -1,8 +1,8 @@
 var router = require('express').Router();
 var adventuresCtrl = require('../controllers/adventures');
 
-router.get('/adventures', adventuresCtrl.isLoggedIn, adventuresCtrl.index);
-
+router.get('/', adventuresCtrl.isLoggedIn, adventuresCtrl.index);
+router.get('/new', adventuresCtrl.new);
 
 
 

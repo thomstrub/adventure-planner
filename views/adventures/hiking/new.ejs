@@ -1,0 +1,87 @@
+<%- include('../partials/header') %>
+
+<body>
+    <%- include('../partials/nav') %>
+    <div class="container">
+        <div>
+            <h1>Plan an Adventure</h1>
+        </div>
+        <form action="/adventures" method="POST">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name">
+                <label>Primary Region: </label>
+                    <select name="primary">
+                        <option value="" selected>Choose a region</option>
+                        <% region.primary.forEach((r) => { %>
+                            <option value="<%=r%>"><%=r%></option>
+                        <% }) %>
+                    </select>
+                
+                <label>Secondary Region: </label>
+                    <select name="secondary">
+                        <option value="" selected>Choose a region</option>
+                        <% region.secondary.forEach((r) => { %>
+                            <option value="<%=r%>"><%=r%></option>
+                        <% }) %>
+                    </select>
+                
+                <label>Sub Region: </label>
+                    <select name="subRegion">
+                        <option value="" selected>Choose a region</option>
+                        <% region.subRegion.forEach((r) => { %>
+                            <option value="<%=r%>"><%=r%></option>
+                        <% }) %>
+                    </select>
+                
+                <label>Elevation Gain:</label>
+                <input type="text" name="elevationGain">
+
+                <label>High Point:</label>
+                <input type="text" name="highPoint">
+
+                <label>Round Trip:</label>
+                <input type="text" name="roundtrip">
+            </div>
+            <div class="form-group">
+                <label>Name:
+                    <select name="airline">
+                        <option value="" selected>Choose an Airline</option>
+                        <option value="American">American</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Southwest">Southwest</option>
+                        <option value="United">United</option>
+                    </select>
+                </label><br>
+            </div>
+            <div class="form-group">
+                <label>Airport:
+                    <select name="airport">
+                        <option value="" selected>Choose and Airport</option>
+                        <option value="ATL">Atlanta (ATL)</option>
+                        <option value="DFW">Dallas / Fort-Worth (DFW)</option>
+                        <option value="DEN">Denver (DEN)</option>
+                        <option value="LAX">Los Angeles (LAX)</option>
+                        <option value="SAN">San Diego (SAN)</option>
+                    </select>
+                </label><br>
+            </div>
+            <div class="form-group">
+                <label>Flight Number:
+                    <input type="text" name="flightNo">
+                </label><br>
+            </div>
+            <div class="form-group">
+                <label>Departure Date:
+                    <input type="datetime-local" name="departs" value="<%=departs%>">
+                </label><br>
+            </div>
+            
+            <input type="submit" value="Add Flight">
+        </form>
+    </div><!---container-->
+    
+</body>
+<%- include('../partials/footer') %>
+
+</html>

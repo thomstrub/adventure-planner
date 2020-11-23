@@ -21,6 +21,8 @@ require('./config/passport');
 //require our routes
 var indexRoutes = require('./routes/index');
 var adventuresRoutes = require('./routes/adventures');
+var hikingRoutes = require('./routes/hiking');
+var backpackingRoutes = require('./routes/backpacking');
 
 console.log(process.env, "env --------------------")
 
@@ -52,8 +54,10 @@ app.use(function (req, res, next) {
 
 
 // mount all routes with appropriate base paths
-app.use('/', adventuresRoutes);
+app.use('/adventures', adventuresRoutes);
 app.use('/', indexRoutes);
+app.use('/adventures/hiking', hikingRoutes);
+app.use('/adventures/backpacking', backpackingRoutes);
 
 
 

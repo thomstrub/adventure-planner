@@ -1,16 +1,25 @@
-<%- include('./partials/header.ejs')%>
+<%- include('./adventures/partials/header.ejs')%>
 <body>
-    <%- include('./partials/nav.ejs')%>
+    <%- include('./adventures/partials/nav.ejs')%>
 
-<div class="row">
-    <div class="col-md-6 offset-3">
-        <div class="jumbotron">
-            <h1 class="display-3">Login to Plan Your Next Adventure!</h1>
-            <a class= "btn btn-primary" href="/auth/google"><i ></i>Login with Google</a>
+<div class="container">
+    <div class="row login">
+        <div class="col-md-6 offset-3">
+            <div class="jumbotron">
+                <h1 class="display-3">Login to Plan Your Next Adventure!</h1>
+                <a class= "btn btn-primary" href="/auth/google"><i ></i>Login with Google</a>
+            </div>
         </div>
     </div>
 </div>
-    
+
+
+
+
+
+
+
+<%- include('./adventures/partials/footer.ejs')%>   
 </body>
-<%- include('./partials/footer.ejs')%>
+
 </html>

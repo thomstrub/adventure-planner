@@ -1,9 +1,20 @@
 const mongoose = require('mongoose');
 
 const regionSchema = new mongoose.Schema({
-    primary: String,
-    secondary: String,
-    subRegion: String
+    primary: {
+        type: String,
+        enum: ['Eastern Cascades', 'Western Cascades', 'Olympic Peninsula']
+    },
+    secondary: {
+        type: String,
+        enum: ['North Cascades', 'Central Cascades', 'South Cascades', 'Olympic Mountains', 'Olympic Coast']
+    },
+    subRegion: {
+        type: String,
+        enum: ['Mt. Baker', 'North Cascades National Park', 'Paysatan', 'Methow / Sawtooth', 'Lake Wenatchee', 'Icicle Creek',
+         'Blue Mountains', 'Entiat', 'Mountain Loop Highway', 'Suiattle River Valley',
+          'Teanaway', 'West Slope', "Steven's Pass", 'Rainy Pass', 'Mount Adams']
+    }
 }, {
     timestamps: true
 });
