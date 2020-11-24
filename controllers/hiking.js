@@ -11,8 +11,8 @@ module.exports = {
 
 
 const nav = {
-    'Find Adventure': 'adventures',
-    'Add Adventure': 'adventures/new',
+    'Find Adventure': '/adventures',
+    'Add Adventure': '/adventures/new',
     About: '#'
 }
 const keys = Object.keys(nav);
@@ -53,6 +53,10 @@ function create(req, res) {
     req.body.riverCrossings = !!req.body.riverCrossings;
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
+
+    //add detailsLink
+    req.body.detailsLink = `/adventures/hiking/`;
+
     req.body.region = {
         primary: req.body.primary,
         secondary: req.body.secondary,
@@ -72,6 +76,7 @@ function create(req, res) {
 
 async function show(req, res) {
     try{
+        console.log(nav, "<------this is the nav ", keys, "<------ these are the keys")
         const hikeObj = await Hike.findById(req.params.id);
         res.render('adventures/hiking/show', {
             hike: hikeObj,

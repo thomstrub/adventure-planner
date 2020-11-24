@@ -50,7 +50,8 @@ const hikeSchema = new mongoose.Schema({
     weatherLink: String,
     reviewLink: String,
     mapLink: String,
-    photoLink: String
+    photoLink: String,
+    detailsLink: String
 
 }, {
     timestamps: true

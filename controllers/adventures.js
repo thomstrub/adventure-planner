@@ -23,6 +23,9 @@ const region = {
 async function index(req, res, next) {
     try {
         const allHikes = await Hike.find({});
+        allHikes.forEach((h) => {
+            h.detailsLink += h._id;
+        })
         console.log(allHikes, "allHikes <-------------")
         res.render('adventures/index', {
             title: 'Adventure Home',
