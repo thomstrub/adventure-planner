@@ -37,6 +37,7 @@ function newHike(req, res) {
     res.render('adventures/hiking/new', {
         title: 'Plan a Hike',
         navBar: nav,
+        keys,
         region
     })
 }

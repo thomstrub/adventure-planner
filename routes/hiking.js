@@ -1,12 +1,13 @@
 var router = require('express').Router();
+const { isLoggedIn } = require('../controllers');
 var hikingCtrl = require('../controllers/hiking');
 
 router.get('/', hikingCtrl.isLoggedIn, hikingCtrl.index);
 router.get('/new', hikingCtrl.isLoggedIn, hikingCtrl.new);
 
-router.post('/', hikingCtrl.create);
+router.post('/', hikingCtrl.isLoggedIn, hikingCtrl.create);
 
-router.get('/:id', hikingCtrl.isLoggedIn, hikingCtrl.show)
+router.get('/:id', hikingCtrl.isLoggedIn,  hikingCtrl.show)
 
 
 
