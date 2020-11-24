@@ -1,0 +1,124 @@
+<form action="/adventures/hiking" method="POST">
+    <div class="form-group">
+        <label>Name:</label>
+        <input class="form-control" type="text" name="name" placeholder="Goat Lake">
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <label>Primary Region: </label>
+                <select class="form-control" name="region.primary">
+                <option value="" selected>Choose a region</option>
+                <% region.primary.forEach((r) => { %>
+                    <option value="<%=r%>"><%=r%></option>
+                <% }) %>
+            </select>
+            </div>
+            <div class="col">
+                <label>Secondary Region: </label>
+            <select class="form-control" name="region.secondary">
+                <option value="" selected>Choose a region</option>
+                <% region.secondary.forEach((r) => { %>
+                    <option value="<%=r%>"><%=r%></option>
+                <% }) %>
+            </select>
+            </div>
+        </div>
+        
+        
+        </div>
+        <div class="form-group">
+            <label>Sub Region: </label>
+            <select class="form-control" name="region.subRegion">
+                <option value="" selected>Choose a region</option>
+                <% region.subRegion.forEach((r) => { %>
+                    <option value="<%=r%>"><%=r%></option>
+                <% }) %>
+            </select>
+        </div>
+        
+    
+    <div class="form-group"> 
+        <div class="row">
+            <div class="col">
+                <label>Elevation Gain:</label>
+                <input class="form-control" type="text" name="elevationGain">
+            </div>
+            <div class="col">
+                <label>High Point:</label>
+                <input class="form-control" type="text" name="highPoint">
+            </div>
+            <div class="col">
+                <label>Round Trip:</label>
+                <input class="form-control" type="text" name="roundtrip">
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label">Features:</label><br>
+                <div class="form-check form-check-inline">
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" class="form-check-input" id="water-feature" name="features" value="Cool Water Feature">
+                            <label class="form-check-label" for="water-feature">Water Feature</label>
+                            <input class="form-check-input" type="checkbox" class="form-check-input" id="epic-view" name="features" value="Epic View Point" checked>
+                            <label class="form-check-label" for="epic-view">Epic View</label>
+                        </div>
+                        
+                    </div>
+                </div>  
+            </div>
+
+            <div class="col">
+                <label>Earliest Hikeable Month</label>
+                <select class="form-control" name="meltout">
+                    <option value="" selected>Select a Month</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+            
+      
+        <label>Travel Time</label>
+            <input type="text" name="travelTime">
+        <label>Popularity</label>
+            <select name="popularity">
+                <option value="Low" selected>Low</option>
+                <option value="Medium-Low">Medium-Low</option>
+                <option value="Medium">Medium</option>
+                <option value="Too Popular">Too Popular</option>
+            </select>
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="waterSources" name="waterSources" checked>
+            <label class="form-check-label" for="waterSources">Dependable Water Sources</label>
+            <input type="checkbox" class="form-check-input" id="river-crossing" name="riverCrossings" checked>
+            <label class="form-check-label" for="river-crossing">Known River Crossings</label>
+        </div>
+        <label>Forecast Link:</label>
+        <input type="text" name="weatherLink">
+        <label>Map Link:</label>
+        <input type="text" name="mapLink">
+        <label>Photo Link:</label>
+        <input type="text" name="photoLink">
+        <label>Review Link</label>
+        <input type="text" name="reviewLink">
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="scrambling" name="scrambling" checked>
+            <label class="form-check-label" for="scrambling">Scrables On This Route</label>
+            <input type="checkbox" class="form-check-input" id="car-camping" name="carCamping" checked>
+            <label class="form-check-label" for="car-camping">Good Car-Camping Spots Nearby</label>
+        </div>
+    </div>
+    
+    <input type="submit" value="Add Hiking Adventure">
+</form>

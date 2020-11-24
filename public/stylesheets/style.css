@@ -39,3 +39,14 @@
   margin: calc(10px + .5vh);
   padding: calc(20px + 2vh)
 }
+
+.selected {
+  display: block;
+}
+.hidden {
+  display: hidden;
+}
+
+div {
+  margin: .5vh auto;
+}

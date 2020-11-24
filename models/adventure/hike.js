@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+
 const regionSchema = new mongoose.Schema({
     primary: {
         type: String,
@@ -41,30 +43,19 @@ const hikeSchema = new mongoose.Schema({
         type: String,
         enum: ['Low', 'Medium-Low', 'Medium', 'Too Popular']
     },
-    waterSources: {
-        type: String,
-        enum: ['Yes', 'No']
-    },
-    riverCrossings: {
-        type: String,
-        enum: ['Yes', 'No']
-    },
+    waterSources: Boolean,
+    riverCrossings: Boolean,
+    scrambling: Boolean,
+    carCamping: Boolean,
     weatherLink: String,
     reviewLink: String,
     mapLink: String,
-    photoLink: String,
-    scrambling: {
-        type: String,
-        enum: ['Yes', 'No']
-    },
-    carCamping: {
-        type: String,
-        enum: ['Yes', 'No']
-    },
-
+    photoLink: String
 
 }, {
     timestamps: true
 });
+
+
 
 module.exports = mongoose.model('Hike', hikeSchema);

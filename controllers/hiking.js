@@ -4,19 +4,24 @@ const Hike = require('../models/adventure/hike');
 module.exports = {
     isLoggedIn,
     new: newHike,
-    index
+    index,
+    create
 }
 
 
-const nav = ['Find Adventure', 'Add Adventure', 'About'];
+const nav = {
+    'Find Adventure': 'adventures',
+    'Add Adventure': 'adventures/new',
+    About: '#'
+}
+const keys = Object.keys(nav);
 
 const region = {
-    primary: ['Eastern Cascades', 'Western Cascades', 'Olympic Peninsula'],
-    secondary: ['North Cascades', 'Central Cascades', 'South Cascades', 'Olympic Mountains', 'Olympic Coast'],
-    subRegion: ['Mt. Baker', 'North Cascades National Park', 'Paysatan', 'Methow / Sawtooth', 'Lake Wenatchee', 'Icicle Creek',
-    'Blue Mountains', 'Entiat', 'Mountain Loop Highway', 'Suiattle River Valley',
-     'Teanaway', 'West Slope', "Steven's Pass", 'Rainy Pass', 'Mount Adams']
+    primary: Hike.schema.path('region.primary').enumValues,
+    secondary: Hike.schema.path('region.secondary').enumValues,
+    subRegion: Hike.schema.path('region.subRegion').enumValues
 }
+
 
 //define authorization function
 function isLoggedIn(req, res, next){
@@ -27,7 +32,7 @@ function isLoggedIn(req, res, next){
     }
 }
 function newHike(req, res) {
-    console.log(Hike, "<------------Hike")
+    console.log(region, "<------------region")
     res.render('adventures/hiking/new', {
         title: 'Plan a Hike',
         navBar: nav,
@@ -37,4 +42,26 @@ function newHike(req, res) {
 
 function index(req, res) {
     console.log('index call');
+}
+
+function create(req, res) {
+    console.log(req.body, "req.body <------------------------")
+    // change on to Boolean
+    req.body.waterSources = !!req.body.waterSources;
+    req.body.riverCrossings = !!req.body.riverCrossings;
+    req.body.scrambling = !!req.body.scrambling;
+    req.body.carCamping = !!req.body.carCamping;
+
+    // create a new database entry
+    const hike = new Hike(req.body);
+    hike.save(function(err){
+        console.log(hike, "hike <----------------");
+    //errors
+        if(err) return res.redirect('/adventures');
+        res.redirect('/adventures');
+    })
+    
+
+
+
 }

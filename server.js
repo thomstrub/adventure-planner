@@ -55,10 +55,10 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/adventures', adventuresRoutes);
-app.use('/', indexRoutes);
+
 app.use('/adventures/hiking', hikingRoutes);
 app.use('/adventures/backpacking', backpackingRoutes);
-
+app.use('/', indexRoutes);
 
 
 // invalid request, send 404 page
