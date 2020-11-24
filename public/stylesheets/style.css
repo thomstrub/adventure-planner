@@ -50,3 +50,10 @@
 div {
   margin: .5vh auto;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+           /* Footer height */
+}

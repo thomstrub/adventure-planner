@@ -5,7 +5,8 @@ module.exports = {
     isLoggedIn,
     new: newHike,
     index,
-    create
+    create,
+    show
 }
 
 
@@ -51,6 +52,11 @@ function create(req, res) {
     req.body.riverCrossings = !!req.body.riverCrossings;
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
+    req.body.region = {
+        primary: req.body.primary,
+        secondary: req.body.secondary,
+        subRegion: req.body.subRegion
+    }
 
     // create a new database entry
     const hike = new Hike(req.body);
@@ -60,8 +66,17 @@ function create(req, res) {
         if(err) return res.redirect('/adventures');
         res.redirect('/adventures');
     })
-    
 
+}
 
+async function show(req, res) {
+    try{
+        const hikeObj = await Hike.findById(req.params.id);
+        res.render('adventures/hiking/show', {
+            hike: hikeObj
+        })
 
+    } catch(err){
+        res.send(err);
+    }
 }

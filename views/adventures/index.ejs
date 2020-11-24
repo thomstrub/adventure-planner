@@ -10,15 +10,40 @@
   <div class="container">
 
     <h1>Adventures</h1>
-<% hikes.forEach((hike) => { %>
-   <%= hike.name %>
-<% }); %>
 
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sub Region</th>
+        <th>Elevation Gain</th>
+        <th>Round Trip Distance</th>
+        <th>Earliest Melt-out</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% hikes.forEach((h) => { %>
+        <% console.log(h, "h", h.region[0], "h.region <------") %>
+
+        <tr >
+          <td><%= h.name %></td>
+          <td><%= h.region[0].subRegion %></td>
+          <td><%= h.elevationGain %></td>
+          <td><%= h.roundtrip %></td>
+          <td><%= h.meltout %></td>
+          <td><a href="/adventures/hiking/<%=h._id%>">HIKE DETAILS</a></td>
+        </tr>
+    <% }); %>
+
+
+
+    <!-- FOOTER -->
+<%- include('./partials/footer') %>
   </div>
   <!-- /.container -->
 
-<!-- FOOTER -->
-<%- include('./partials/footer') %>
+
 
 </body>
 

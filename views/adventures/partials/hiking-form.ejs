@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col">
                 <label>Primary Region: </label>
-                <select class="form-control" name="region.primary">
+                <select class="form-control" name="primary">
                 <option value="" selected>Choose a region</option>
                 <% region.primary.forEach((r) => { %>
                     <option value="<%=r%>"><%=r%></option>
@@ -16,7 +16,7 @@
             </div>
             <div class="col">
                 <label>Secondary Region: </label>
-            <select class="form-control" name="region.secondary">
+            <select class="form-control" name="secondary">
                 <option value="" selected>Choose a region</option>
                 <% region.secondary.forEach((r) => { %>
                     <option value="<%=r%>"><%=r%></option>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label>Sub Region: </label>
-            <select class="form-control" name="region.subRegion">
+            <select class="form-control" name="subRegion">
                 <option value="" selected>Choose a region</option>
                 <% region.subRegion.forEach((r) => { %>
                     <option value="<%=r%>"><%=r%></option>
