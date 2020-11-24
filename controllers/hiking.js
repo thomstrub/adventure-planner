@@ -73,7 +73,10 @@ async function show(req, res) {
     try{
         const hikeObj = await Hike.findById(req.params.id);
         res.render('adventures/hiking/show', {
-            hike: hikeObj
+            hike: hikeObj,
+            title: hikeObj.name,
+            navBar: nav,
+            keys
         })
 
     } catch(err){
