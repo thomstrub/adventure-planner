@@ -30,9 +30,7 @@ function create(req, res) {
     req.body.riverCrossings = !!req.body.riverCrossings;
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
-
-    //add detailsLink
-    req.body.detailsLink = `/adventures/hiking/`;
+    
 
     req.body.region = {
         primary: req.body.primary,
@@ -41,9 +39,16 @@ function create(req, res) {
     }
 
     // create a new database entry
-    const hike = new Hike(req.body);
-    hike.save(function(err){
-        console.log(hike, "hike <----------------");
+    const backpack = new Backpack(req.body);
+
+    //add detailsLink
+    backpack.detailsLink = '/adventures/backpacking/'
+
+    //add user
+    backpack.userId = req.user._id;
+
+    backpack.save(function(err){
+        console.log(backpack, "backpack <----------------");
     //errors
         if(err) return res.redirect('/adventures');
         res.redirect('/adventures');
@@ -54,10 +59,10 @@ function create(req, res) {
 async function show(req, res) {
     try{
         console.log(nav, "<------this is the nav ", keys, "<------ these are the keys")
-        const hikeObj = await Hike.findById(req.params.id);
+        const backpackObj = await Backpack.findById(req.params.id);
         res.render('adventures/backpacking/show', {
-            hike: hikeObj,
-            title: hikeObj.name,
+            backpack: backpackObj,
+            title: backpackObj.name,
             navBar: nav,
             keys
         })

@@ -56,8 +56,7 @@ function create(req, res) {
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
 
-    //add detailsLink
-    req.body.detailsLink = `/adventures/hiking/`;
+   
 
     req.body.region = {
         primary: req.body.primary,
@@ -67,6 +66,11 @@ function create(req, res) {
 
     // create a new database entry
     const hike = new Hike(req.body);
+     //add detailsLink
+    hike.detailsLink = '/adventures/hiking';
+    //add userId 
+    hike.userId = req.user._id;
+    console.log(hike.userId, "hike.userId from create <------------")
     hike.save(function(err){
         
     //errors

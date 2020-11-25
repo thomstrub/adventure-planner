@@ -28,13 +28,22 @@
         
         </div>
         <div class="form-group">
-            <label>Sub Region: </label>
-            <select class="form-control" name="subRegion">
-                <option value="" selected>Choose a region</option>
-                <% region.subRegion.forEach((r) => { %>
-                    <option value="<%=r%>"><%=r%></option>
-                <% }) %>
-            </select>
+            <div class="row">
+               <div class="col">
+                    <label>Sub Region: </label>
+                    <select class="form-control" name="subRegion">
+                        <option value="" selected>Choose a region</option>
+                        <% region.subRegion.forEach((r) => { %>
+                            <option value="<%=r%>"><%=r%></option>
+                        <% }) %>
+                    </select>
+               </div>
+               <div class="col">
+                    <label>Number of Days:</label>
+                    <input class="form-control" type="text" name="numberOfDays">
+               </div> 
+            </div>
+            
         </div>
         
     
@@ -120,5 +129,5 @@
         </div>
     </div>
     
-    <input type="submit" value="Add Hiking Adventure">
+    <input type="submit" value="Add Backpacking Adventure">
 </form>
