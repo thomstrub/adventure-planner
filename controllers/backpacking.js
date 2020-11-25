@@ -8,7 +8,12 @@ module.exports = {
     
 }
 
-const nav = ['Find Adventure', 'Add Adventure', 'About'];
+const nav = {
+    'Find Adventure': '/adventures',
+    'Add Adventure': '/adventures/new',
+    About: '#'
+}
+const keys = Object.keys(nav);
 
 //define authorization function
 function isLoggedIn(req, res, next){
@@ -58,14 +63,15 @@ function create(req, res) {
 
 async function show(req, res) {
     try{
-        console.log(nav, "<------this is the nav ", keys, "<------ these are the keys")
+        
         const backpackObj = await Backpack.findById(req.params.id);
+        console.log(backpackObj, "hitting the backpackObj ------<-------<-------")
         res.render('adventures/backpacking/show', {
             backpack: backpackObj,
             title: backpackObj.name,
             navBar: nav,
             keys
-        })
+        });
 
     } catch(err){
         res.send(err);

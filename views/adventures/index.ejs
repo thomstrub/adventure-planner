@@ -23,14 +23,14 @@
       </tr>
     </thead>
 
-    <% hikes.forEach((h) => { %>
+    <% adventures.forEach((a) => { %>
         <tr >
-          <td><%= h.name %></td>
-          <td><%= h.region[0].subRegion %></td>
-          <td><%= h.elevationGain %></td>
-          <td><%= h.roundtrip %></td>
-          <td><%= h.meltout %></td>
-          <td><a href=<%=h.detailsLink%>>HIKE DETAILS</a></td>
+          <td><a href=<%=a.detailsLink%>><%= a.name %></a></td>
+          <td><%= a.region[0].subRegion %></td>
+          <td><%= a.elevationGain %></td>
+          <td><%= a.roundtrip %></td>
+          <td><%= a.meltout %></td>
+          
         </tr>
     <% }); %>
 

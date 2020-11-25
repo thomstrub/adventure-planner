@@ -57,7 +57,7 @@ async function index(req, res, next) {
             title: 'Adventure Home',
             navBar: nav,
             keys,
-            hikes: userAdventures
+            adventures: userAdventures
         });
     } catch (err){
         res.send(err);
