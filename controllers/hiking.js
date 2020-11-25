@@ -33,7 +33,6 @@ function isLoggedIn(req, res, next){
     }
 }
 function newHike(req, res) {
-    console.log(region, "<------------region")
     res.render('adventures/hiking/new', {
         title: 'Plan a Hike',
         navBar: nav,
@@ -47,7 +46,10 @@ function index(req, res) {
 }
 
 function create(req, res) {
-    console.log(req.body, "req.body <------------------------")
+    //add userId
+    console.log(req.user, "req.user <------------------------")
+    req.body.userId = req.user._id;
+    console.log(req.body.userId)
     // change on to Boolean
     req.body.waterSources = !!req.body.waterSources;
     req.body.riverCrossings = !!req.body.riverCrossings;
@@ -66,7 +68,7 @@ function create(req, res) {
     // create a new database entry
     const hike = new Hike(req.body);
     hike.save(function(err){
-        console.log(hike, "hike <----------------");
+        
     //errors
         if(err) return res.redirect('/adventures');
         res.redirect('/adventures');
@@ -76,7 +78,7 @@ function create(req, res) {
 
 async function show(req, res) {
     try{
-        console.log(nav, "<------this is the nav ", keys, "<------ these are the keys")
+        
         const hikeObj = await Hike.findById(req.params.id);
         res.render('adventures/hiking/show', {
             hike: hikeObj,

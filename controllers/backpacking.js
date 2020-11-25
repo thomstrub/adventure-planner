@@ -20,6 +20,10 @@ function isLoggedIn(req, res, next){
 }
 
 function create(req, res) {
+    //add userId
+    console.log(req.user, "req.user <------------------------")
+    req.body.userId = req.user._id;
+
     console.log(req.body, "req.body <------------------------")
     // change on to Boolean
     req.body.waterSources = !!req.body.waterSources;
