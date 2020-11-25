@@ -6,7 +6,8 @@ module.exports = {
     new: newHike,
     index,
     create,
-    show
+    show,
+    edit
 }
 
 
@@ -92,6 +93,20 @@ async function show(req, res) {
         })
 
     } catch(err){
+        res.send(err);
+    }
+}
+
+async function edit(req, res) {
+    try{
+        const hikeObj = await Hike.findById(req.params.id);
+        res.render('adventures/hiking/edit', {
+            hike: hikeObj,
+            title: hikeObj.name,
+            navBar: nav,
+            keys
+        })
+    }catch(err){
         res.send(err);
     }
 }

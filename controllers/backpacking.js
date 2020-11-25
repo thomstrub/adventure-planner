@@ -4,7 +4,8 @@ const Backpack = require('../models/adventure/backpack');
 module.exports = {
     isLoggedIn,
     create,
-    show
+    show,
+    edit
     
 }
 
@@ -74,6 +75,20 @@ async function show(req, res) {
         });
 
     } catch(err){
+        res.send(err);
+    }
+}
+
+async function edit(req, res) {
+    try{
+        const hikeObj = await Hike.findById(req.params.id);
+        res.render('adventures/backpacking/edit', {
+            backpack: backpackObj,
+            title: backpackObj.name,
+            navBar: nav,
+            keys
+        })
+    }catch(err){
         res.send(err);
     }
 }
