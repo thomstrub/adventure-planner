@@ -6,24 +6,119 @@
         <div>
             <h1><%= hike.name%></h1>
         </div>
-        <div>
-            
-        </div>
-
         <div class="row">
             <div class="col-md-6 offset-3">
                 <div>
-                    <img src=<%= hike.photoLink%> title="<%hike.name%>" >
+                    <img class="show-pic" src=<%= hike.photoLink%> title="<%=hike.name%>" >
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Primary Region:</h3>
+                                    <p><%=hike.region[0].primary%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Secondary Region:</h3>
+                                    <p><%=hike.region[0].secondary%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Sub-Region:</h3>
+                                    <p><%=hike.region[0].subRegion%></p>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Number of Days:</h3>
+                                    <p><%=hike.numberOfDays%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Total Eleveation Gain:</h3>
+                                    <p><%=hike.elevationGain%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Highest Point</h3>
+                                    <p><%=hike.highPoint%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Roundtrip Distance</h3>
+                                    <p><%=hike.roundtrip%></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Features:</h3>
+                                    <p>
+                                        <%= typeof hike.features === String ? hike.features : 'This hike has it all'%>
+
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <h3>Earliest Melt-out:</h3>
+                                    <p><%=hike.meltout%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Travel Time from Home:</h3>
+                                    <p><%=hike.travelTime%></p>
+                                </div>
+                            </div>
+
+                            <!---Booleans----->
+                            <div class="row">
+                                <div class="col">
+                                    <h4>
+                                        <%= hike.waterSources ? 'There are known water sources' : 'No known water sources'%>
+
+                                    </h4>
+                                    
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= hike.riverCrossings ? 'There are substantial rivers / creek crossings.' : 'No anticipated river crossings.'%>
+                                    </h4>
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= hike.scrambling ? 'There are scrambles on this route.' : 'No anticipated scrambles.'%>
+                                    </h4>
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= hike.carCamping ? 'There is car camping nearby.' : 'No known worthwhile car-camp spots.'%>
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <!---Links----->
+                            <div class="row">
+                                <div class="col">
+                                    <a href="<%=hike.weatherLink%>">Weather Forecast</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<%=hike.reviewLink%>">Trip Reports</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<%=hike.mapLink%>">Directions</a>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
         <div>
             <a href="/adventures/hiking/<%=hike.id%>/edit">Edit This Hiking Adventure</a>
         </div>
+
     </div><!---container-->
-    
+   
 </body>
-<%- include('../partials/footer') %>
+
 
 </html>

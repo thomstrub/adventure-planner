@@ -7,10 +7,11 @@ module.exports = {
     index,
     create,
     show,
-    edit
+    edit,
+    update
 }
 
-
+// -------------------------constants for render function--------------
 const nav = {
     'Find Adventure': '/adventures',
     'Add Adventure': '/adventures/new',
@@ -24,6 +25,8 @@ const region = {
     subRegion: Hike.schema.path('region.subRegion').enumValues
 }
 
+
+//--------------------------------functions---------------------------
 
 //define authorization function
 function isLoggedIn(req, res, next){
@@ -104,9 +107,34 @@ async function edit(req, res) {
             hike: hikeObj,
             title: hikeObj.name,
             navBar: nav,
-            keys
+            keys,
+            region
         })
     }catch(err){
+        res.send(err);
+    }
+}
+
+async function update(req, res) {
+    try {
+        const hikeObj = await Hike.findById(req.params.id);
+        req.body.region = {
+            primary: req.body.primary,
+            secondary: req.body.secondary,
+            subRegion: req.body.subRegion
+        }
+
+
+        for (const key in req.body) {
+            console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
+            hikeObj[key] = req.body[key];
+        }
+
+
+        await hikeObj.save();
+        res.redirect(`/adventures/hiking/${req.params.id}`);
+    } catch (err) {
+        console.log("update error");
         res.send(err);
     }
 }

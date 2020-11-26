@@ -7,7 +7,8 @@ router.get('/new', hikingCtrl.isLoggedIn, hikingCtrl.new);
 
 router.post('/', hikingCtrl.isLoggedIn, hikingCtrl.create);
 router.get('/:id/edit', hikingCtrl.isLoggedIn, hikingCtrl.edit);
-router.get('/:id', hikingCtrl.isLoggedIn,  hikingCtrl.show)
+router.get('/:id', hikingCtrl.isLoggedIn,  hikingCtrl.show);
+router.put('/:id', hikingCtrl.isLoggedIn, hikingCtrl.update)
 
 
 
