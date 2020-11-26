@@ -5,7 +5,8 @@ module.exports = {
     isLoggedIn,
     create,
     show,
-    edit
+    edit,
+    update
     
 }
 
@@ -100,6 +101,30 @@ async function edit(req, res) {
             region
         })
     }catch(err){
+        res.send(err);
+    }
+}
+
+async function update(req, res) {
+    try {
+        const backpackObj = await Backpack.findById(req.params.id);
+        req.body.region = {
+            primary: req.body.primary,
+            secondary: req.body.secondary,
+            subRegion: req.body.subRegion
+        }
+
+
+        for (const key in req.body) {
+            console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
+            backpackObj[key] = req.body[key];
+        }
+
+
+        await backpackObj.save();
+        res.redirect(`/adventures/backpacking/${req.params.id}`);
+    } catch (err) {
+        console.log("update error");
         res.send(err);
     }
 }

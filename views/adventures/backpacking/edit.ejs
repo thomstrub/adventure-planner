@@ -56,15 +56,15 @@
                 <div class="row">
                     <div class="col">
                         <label>Elevation Gain:</label>
-                        <input class="form-control" type="text" name="elevationGain">
+                        <input class="form-control" type="text" name="elevationGain" value="<%=backpack.elevationGain%>">
                     </div>
                     <div class="col">
                         <label>High Point:</label>
-                        <input class="form-control" type="text" name="highPoint">
+                        <input class="form-control" type="text" name="highPoint" value="<%=backpack.highPoint%>">
                     </div>
                     <div class="col">
                         <label>Round Trip:</label>
-                        <input class="form-control" type="text" name="roundtrip">
+                        <input class="form-control" type="text" name="roundtrip" value="<%=backpack.roundtrip%>">
                     </div>
                 </div>
                 
@@ -91,11 +91,10 @@
                     <div class="col">
                         <label>Earliest Hikeable Month</label>
                         <select class="form-control" name="meltout">
-                            <option value="" selected>Select a Month</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
+                            <option value="May" <%= backpack.meltout === "May" ? "selected" : "" %> >May</option>
+                            <option value="June" <%= backpack.meltout === "June" ? "selected" : "" %> >June</option>
+                            <option value="July" <%= backpack.meltout === "July" ? "selected" : "" %> >July</option>
+                            <option value="August" <%= backpack.meltout === "August" ? "selected" : "" %> >August</option>
                         </select>
                     </div>
                 </div>
