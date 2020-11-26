@@ -6,16 +6,119 @@
         <div>
             <h1><%= backpack.name%></h1>
         </div>
-        <div>
-            <img src=<%= backpack.photoLink%> title="<%=backpack.name%>" >
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div>
+                    <img class="show-pic" src=<%= backpack.photoLink%> title="<%=backpack.name%>" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Primary Region:</h3>
+                                    <p><%=backpack.region[0].primary%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Secondary Region:</h3>
+                                    <p><%=backpack.region[0].secondary%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Sub-Region:</h3>
+                                    <p><%=backpack.region[0].subRegion%></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Number of Days:</h3>
+                                    <p><%=backpack.numberOfDays%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Total Eleveation Gain:</h3>
+                                    <p><%=backpack.elevationGain%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Highest Point</h3>
+                                    <p><%=backpack.highPoint%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Roundtrip Distance</h3>
+                                    <p><%=backpack.roundtrip%></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Features:</h3>
+                                    <p>
+                                        <%= typeof backpack.features === String ? backpack.features : 'This hike has it all'%>
+
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <h3>Earliest Melt-out:</h3>
+                                    <p><%=backpack.meltout%></p>
+                                </div>
+                                <div class="col">
+                                    <h3>Travel Time from Home:</h3>
+                                    <p><%=backpack.travelTime%></p>
+                                </div>
+                            </div>
+
+                            <!---Booleans----->
+                            <div class="row">
+                                <div class="col">
+                                    <h4>
+                                        <%= backpack.waterSources ? 'There are known water sources' : 'No known water sources'%>
+
+                                    </h4>
+                                    
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= backpack.riverCrossings ? 'There are substantial rivers / creek crossings.' : 'No anticipated river crossings.'%>
+                                    </h4>
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= backpack.scrambling ? 'There are scrambles on this route.' : 'No anticipated scrambles.'%>
+                                    </h4>
+                                </div>
+                                <div class="col">
+                                    <h4>
+                                        <%= backpack.carCamping ? 'There is car camping nearby.' : 'No known worthwhile car-camp spots.'%>
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                            <!---Links----->
+                            <div class="row">
+                                <div class="col">
+                                    <a href="<%=backpack.weatherLink%>">Weather Forecast</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<%=backpack.reviewLink%>">Trip Reports</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<%=backpack.mapLink%>">Directions</a>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
         </div>
         <div>
             <a href="/adventures/backpacking/<%=backpack.id%>/edit">Edit This Backpacking Adventure</a>
         </div>
 
     </div><!---container-->
-    
+   
 </body>
-<%- include('../partials/footer') %>
+
 
 </html>

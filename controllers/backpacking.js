@@ -9,12 +9,22 @@ module.exports = {
     
 }
 
+// Constants for use in rendering
 const nav = {
     'Find Adventure': '/adventures',
     'Add Adventure': '/adventures/new',
     About: '#'
 }
 const keys = Object.keys(nav);
+
+const region = {
+    primary: Backpack.schema.path('region.primary').enumValues,
+    secondary: Backpack.schema.path('region.secondary').enumValues,
+    subRegion: Backpack.schema.path('region.subRegion').enumValues
+}
+
+
+// functions
 
 //define authorization function
 function isLoggedIn(req, res, next){
@@ -81,12 +91,13 @@ async function show(req, res) {
 
 async function edit(req, res) {
     try{
-        const hikeObj = await Hike.findById(req.params.id);
+        const backpackObj = await Backpack.findById(req.params.id);
         res.render('adventures/backpacking/edit', {
             backpack: backpackObj,
             title: backpackObj.name,
             navBar: nav,
-            keys
+            keys,
+            region
         })
     }catch(err){
         res.send(err);

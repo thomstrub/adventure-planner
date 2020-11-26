@@ -57,3 +57,7 @@ footer {
   width: 100%;
            /* Footer height */
 }
+
+.show-pic {
+  max-width: 600px;
+}

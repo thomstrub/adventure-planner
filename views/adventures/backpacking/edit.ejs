@@ -1,1 +1,114 @@
-This is edit
+<%- include('../partials/header') %>
+<body>
+    <%- include('../partials/nav') %>
+    <div class="container">
+        <h1>Edit This Backpacking Trip</h1>
+        <form action="/adventures/backpacking/<%=backpack.id%>?_method=PUT"
+            method="POST" class="edit-form" autocomplete="off">
+
+
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" type="text" name="name" value="<%=backpack.name%>">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label>Primary Region: </label>
+                        <select class="form-control" name="primary">
+                        <option value="" selected>Choose a region</option>
+                        <% region.primary.forEach((r) => { %>
+                            <option value="<%=r%>" <%= r === backpack.region[0].primary ? "selected" : "" %> ><%=r%></option>
+                        <% }) %>
+                    </select>
+                    </div>
+                    <div class="col">
+                        <label>Secondary Region: </label>
+                    <select class="form-control" name="secondary">
+                        <% region.secondary.forEach((r) => { %>
+                            <option value="<%=r%>" <%= r === backpack.region[0].primary ? "selected" : "" %> ><%=r%></option>                        <% }) %>
+                    </select>
+                    </div>
+                </div>
+                
+                
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                       <div class="col">
+                            <label>Sub Region: </label>
+                            <select class="form-control" name="subRegion">
+                                <% region.subRegion.forEach((r) => { %>
+                                    <option value="<%=r%>" <%= r === backpack.region[0].primary ? "selected" : "" %> ><%=r%></option>
+                                <% }) %>
+                            </select>
+                       </div>
+                       <div class="col">
+                            <label>Number of Days:</label>
+                            <input class="form-control" type="text" name="numberOfDays" value="<%=backpack.numberOfDays%>">
+                       </div> 
+                    </div>
+                    
+                </div>
+                
+            
+            <div class="form-group"> 
+                <div class="row">
+                    <div class="col">
+                        <label>Elevation Gain:</label>
+                        <input class="form-control" type="text" name="elevationGain">
+                    </div>
+                    <div class="col">
+                        <label>High Point:</label>
+                        <input class="form-control" type="text" name="highPoint">
+                    </div>
+                    <div class="col">
+                        <label>Round Trip:</label>
+                        <input class="form-control" type="text" name="roundtrip">
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="form-group">
+        
+                <div class="row">
+                    <div class="col">
+                        <label class="form-check-label">Features:</label><br>
+                        <div class="form-check form-check-inline">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-check-input" type="checkbox" class="form-check-input" id="water-feature" name="features" value="Cool Water Feature">
+                                    <label class="form-check-label" for="water-feature">Water Feature</label>
+                                    <input class="form-check-input" type="checkbox" class="form-check-input" id="epic-view" name="features" value="Epic View Point" checked>
+                                    <label class="form-check-label" for="epic-view">Epic View</label>
+                                </div>
+                                
+                            </div>
+                        </div>  
+                    </div>
+        
+                    <div class="col">
+                        <label>Earliest Hikeable Month</label>
+                        <select class="form-control" name="meltout">
+                            <option value="" selected>Select a Month</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            
+            <button type="submit">Submit Changes</button>
+        
+
+        </form>
+    </div>
+    
+
+
+</body>
+

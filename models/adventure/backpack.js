@@ -22,8 +22,14 @@ const regionSchema = new mongoose.Schema({
 
 // Create your User Model
 const backpackSchema = new mongoose.Schema({
+    adventureType: {
+        type: String,
+        enum: ["Hike", "Backpack"],
+        default: "Backpack"
+    },
     name: String,
     region: [regionSchema],
+    numberOfDays: String,
     elevationGain: String,
     highPoint: String,
     roundtrip: String,
