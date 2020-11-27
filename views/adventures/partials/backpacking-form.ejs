@@ -96,37 +96,87 @@
         </div>
     </div>
     <div class="form-group">
-            
-      
-        <label>Travel Time</label>
-            <input type="text" name="travelTime">
-        <label>Popularity</label>
-            <select name="popularity">
+        <div class="row">
+            <div class="col">
+                <label>Travel Time</label>
+                <input type="text" name="travelTime">
+            </div>
+            <div class="col">
+                <label>Popularity</label>
+                <select name="popularity">
                 <option value="Low" selected>Low</option>
                 <option value="Medium-Low">Medium-Low</option>
                 <option value="Medium">Medium</option>
                 <option value="Too Popular">Too Popular</option>
             </select>
-        <div class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input" id="waterSources" name="waterSources" checked>
-            <label class="form-check-label" for="waterSources">Dependable Water Sources</label>
-            <input type="checkbox" class="form-check-input" id="river-crossing" name="riverCrossings" checked>
-            <label class="form-check-label" for="river-crossing">Known River Crossings</label>
+            </div>
         </div>
-        <label>Forecast Link:</label>
-        <input type="text" name="weatherLink">
-        <label>Map Link:</label>
-        <input type="text" name="mapLink">
-        <label>Photo Link:</label>
-        <input type="text" name="photoLink">
-        <label>Review Link</label>
-        <input type="text" name="reviewLink">
-        <div class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input" id="scrambling" name="scrambling" checked>
-            <label class="form-check-label" for="scrambling">Scrables On This Route</label>
-            <input type="checkbox" class="form-check-input" id="car-camping" name="carCamping" checked>
-            <label class="form-check-label" for="car-camping">Good Car-Camping Spots Nearby</label>
+
+        <div class="row">
+            
+            <div class="col">
+                <div class="form-check form-check-inline">
+                <div>
+                    <input type="checkbox" class="form-check-input" id="waterSources" name="waterSources">
+                    <label class="form-check-label" for="waterSources">Dependable Water Sources</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" class="form-check-input" id="river-crossing" name="riverCrossings" checked>
+                    <label class="form-check-label" for="river-crossing">Known River Crossings</label>
+                </div>
+                
+                
+                </div>
+            </div>
         </div>
+
+        <div class="row">
+            
+            <div class="col">
+                <div class="form-check form-check-inline">
+                <div>
+                    <input type="checkbox" class="form-check-input" id="scrambling" name="scrambling" checked>
+                    <label class="form-check-label" for="scrambling">Scrables On This Route</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" class="form-check-input" id="car-camping" name="carCamping" checked>
+                    <label class="form-check-label" for="car-camping">Good Car-Camping Spots Nearby</label>
+                </div>
+                
+                
+                </div>
+            </div>
+        </div>
+
+          
+        <div class="row">
+            <div class="col">
+                <label>Photo Link:</label>
+                <input class="form-control" type="text" name="photoLink">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Map Link:</label>
+                <input class="form-control" type="text" name="mapLink">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Forecast Link:</label>
+                <input class="form-control" type="text" name="weatherLink">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Review Link</label>
+                <input class="form-control" type="text" name="reviewLink">
+            </div>
+        </div>
+        
+        
     </div>
     
     <input type="submit" value="Add Backpacking Adventure">

@@ -114,7 +114,11 @@ async function update(req, res) {
             secondary: req.body.secondary,
             subRegion: req.body.subRegion
         }
-
+        // change on to Boolean
+        req.body.waterSources = !!req.body.waterSources;
+        req.body.riverCrossings = !!req.body.riverCrossings;
+        req.body.scrambling = !!req.body.scrambling;
+        req.body.carCamping = !!req.body.carCamping;
 
         for (const key in req.body) {
             console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
