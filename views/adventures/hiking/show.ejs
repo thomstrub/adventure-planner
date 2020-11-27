@@ -115,6 +115,11 @@
         <div>
             <a href="/adventures/hiking/<%=hike.id%>/edit">Edit This Hiking Adventure</a>
         </div>
+
+        <form action="/adventures/hiking/<%= hike._id %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button type="submit">Delete</button>
+        </form>
         
 
     </div><!---container-->

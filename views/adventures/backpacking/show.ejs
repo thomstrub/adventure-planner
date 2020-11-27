@@ -112,9 +112,18 @@
                 </div>
             </div>
         </div>
+
+<!------------Edit / Delete requests------------------->
+
         <div>
             <a href="/adventures/backpacking/<%=backpack.id%>/edit">Edit This Backpacking Adventure</a>
         </div>
+
+        <form action="/adventures/backpacking/<%= backpack._id %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+
 
     </div><!---container-->
    

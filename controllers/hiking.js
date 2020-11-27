@@ -8,7 +8,8 @@ module.exports = {
     create,
     show,
     edit,
-    update
+    update,
+    delete: deleteHike
 }
 
 // -------------------------constants for render function--------------
@@ -71,7 +72,7 @@ function create(req, res) {
     // create a new database entry
     const hike = new Hike(req.body);
      //add detailsLink
-    hike.detailsLink = '/adventures/hiking';
+    hike.detailsLink = '/adventures/hiking/';
     //add userId 
     hike.userId = req.user._id;
     console.log(hike.userId, "hike.userId from create <------------")
@@ -135,6 +136,18 @@ async function update(req, res) {
         res.redirect(`/adventures/hiking/${req.params.id}`);
     } catch (err) {
         console.log("update error");
+        res.send(err);
+    }
+}
+
+async function deleteHike(req, res){
+    try{
+        const hike = await Hike.findById(req.params.id)
+        await hike.remove();
+        res.redirect('/adventures');
+
+    } catch (err){
+        console.log('delete error')
         res.send(err);
     }
 }

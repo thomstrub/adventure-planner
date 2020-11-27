@@ -6,7 +6,8 @@ module.exports = {
     create,
     show,
     edit,
-    update
+    update,
+    delete: deleteBackpack
     
 }
 
@@ -125,6 +126,18 @@ async function update(req, res) {
         res.redirect(`/adventures/backpacking/${req.params.id}`);
     } catch (err) {
         console.log("update error");
+        res.send(err);
+    }
+}
+
+async function deleteBackpack(req, res){
+    try{
+        const backpack = await Backpack.findById(req.params.id)
+        await backpack.remove();
+        res.redirect('/adventures');
+
+    } catch (err){
+        console.log('delete error')
         res.send(err);
     }
 }

@@ -6,7 +6,8 @@ var backpackingCtrl = require('../controllers/backpacking');
 router.post('/', backpackingCtrl.isLoggedIn, backpackingCtrl.create);
 router.get('/:id', backpackingCtrl.isLoggedIn,  backpackingCtrl.show);
 router.get('/:id/edit', backpackingCtrl.isLoggedIn, backpackingCtrl.edit);
-router.put('/:id', backpackingCtrl.isLoggedIn, backpackingCtrl.update)
+router.put('/:id', backpackingCtrl.isLoggedIn, backpackingCtrl.update);
+router.delete('/:id', backpackingCtrl.isLoggedIn, backpackingCtrl.delete);
 
 
 module.exports = router;
