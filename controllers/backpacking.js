@@ -126,7 +126,8 @@ async function edit(req, res) {
             title: backpackObj.name,
             navBar: nav,
             keys,
-            region
+            region,
+            adventures: userAdventures
         })
     }catch(err){
         res.send(err);

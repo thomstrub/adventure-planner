@@ -106,6 +106,7 @@ async function edit(req, res) {
     try{
         const hikeObj = await Hike.findById(req.params.id);
 
+        // rendering related hikes
         let user = req.user;
         const allHikes = await Hike.find({});
         const allBackpacks = await Backpack.find({});
