@@ -14,6 +14,7 @@
     <div class="row">
         <div class="col">
             <div id="typeSelect">
+                <label>Adventure Type: </label>
                 <select id="typeSelectSelect">
                     <option value="all">All Adventures</option>
                     <option value="hiking">Hiking</option>
@@ -21,11 +22,23 @@
                 </select>
             </div>
             <div id="primarySelect">
+                <label>Primary Region: </label>
                 <select id="primarySelectSelect">
                     <option value="all">All Adventures</option>
                     <option value="EasternCascades">Eastern Cascades</option>
                     <option value="WesternCascades">Western Cascades</option>
                     <option value="OlympicPenninsula">Olympic Penninsula</option>
+                </select>
+            </div>
+            <div id="secondarySelect">
+                <label>Secondary Region: </label>
+                <select id="secondarySelectSelect">
+                    <option value="all">All Adventures</option>
+                    <option value="NorthCascades">North Cascades</option>
+                    <option value="CentralCascades">Central Cascades</option>
+                    <option value="SouthCascades">South Cascades</option>
+                    <option value="OlympicMountains">Olympic Mountains</option>
+                    <option value="OlympicCoast">Olympic Coast</option>
                 </select>
             </div>
         </div>
@@ -45,7 +58,7 @@
     </thead>
 
     <% adventures.forEach((a) => { %>
-            <tr class="<%=a.adventureType%> <%=a.region[0].primary.replace( /\s/g, '')%>">
+            <tr class="<%=a.adventureType%> <%=a.region[0].primary.replace( /\s/g, '')%> <%=a.region[0].secondary.replace( /\s/g, '')%>">
                 <td><a href=<%=a.detailsLink%>><%= a.name %></a></td>
                 <td><%=a.adventureType%></td>
                 <td><%= a.region[0].subRegion %></td>
@@ -70,16 +83,24 @@
 <script type="text/javascript">
 
 // ---------------------------- cached elements ---------------------------------//
-
+    // Adventure Type
     let select = document.getElementById('typeSelectSelect');
     let hikingElements = document.querySelectorAll('.Hike');
     let backpackingElements = document.querySelectorAll('.Backpack');
     
-    
+    // Primary Region
     let primarySelect = document.getElementById('primarySelectSelect');
     let easternElements = document.querySelectorAll('.EasternCascades');
     let westernElements = document.querySelectorAll('.WesternCascades');
     let olympicElements = document.querySelectorAll('.OlympicPenninsula');
+
+    // Secondary Region
+    let secondarySelect = document.getElementById('secondarySelectSelect');
+    let northElements = document.querySelectorAll('.NorthCascades');
+    let centralElements = document.querySelectorAll('.CentralCascades');
+    let southElements = document.querySelectorAll('.SouthCascades');
+    let olympicMountainElements = document.querySelectorAll('.OlympicMountains');
+    let olympicCoastElements = document.querySelectorAll('.OlympicCoast');
 
 
 //----------------------------- event listeners ----------------------------------//
@@ -164,6 +185,117 @@
                     element.style.display = 'table-row';
                 });
                 easternElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                break;
+        }
+    })
+
+    //--- filter by secondary region
+    console.log(secondarySelect);
+    secondarySelect.addEventListener('change', function (e){
+        console.log(e.target.value, 'hitting target');
+        let val = e.target.value;
+        switch (val) {
+            case 'NorthCascades':
+                northElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                centralElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                southElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicCoastElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+            case 'CentralCascades':
+                northElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                centralElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                southElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicCoastElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+            case 'SouthCascades':
+                northElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                centralElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                southElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicCoastElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+            case 'OlympicMountains':
+                northElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                centralElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                southElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicCoastElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+            case 'OlympicCoast':
+                northElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                centralElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                southElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicCoastElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                break;
+            case 'all':
+                westernElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                easternElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicMountainElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicCoastElements.forEach((element) => {
                     element.style.display = 'table-row';
                 });
                 break;
