@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Hike = require('../models/adventure/hike');
+const Backpack = require('../models/adventure/backpack')
 
 module.exports = {
     isLoggedIn,
@@ -104,12 +105,41 @@ async function show(req, res) {
 async function edit(req, res) {
     try{
         const hikeObj = await Hike.findById(req.params.id);
+
+        let user = req.user;
+        const allHikes = await Hike.find({});
+        const allBackpacks = await Backpack.find({});
+        let userAdventures = [];
+
+        // filter allHikes to just userHikes
+        let stringId = user.id.toString()
+
+        // let userHikes = [];
+        allBackpacks.forEach((b) => {
+
+            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
+            if(b.userId === stringId) {
+                userAdventures.push(b);
+            }
+        });
+
+        allHikes.forEach((h) => {
+            
+            if(h.userId === stringId) {
+                userAdventures.push(h);
+            }
+        });
+
+
+
+
         res.render('adventures/hiking/edit', {
             hike: hikeObj,
             title: hikeObj.name,
             navBar: nav,
             keys,
-            region
+            region,
+            adventures: userAdventures
         })
     }catch(err){
         res.send(err);

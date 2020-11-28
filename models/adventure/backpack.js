@@ -24,8 +24,8 @@ const regionSchema = new mongoose.Schema({
 const backpackSchema = new mongoose.Schema({
     adventureType: {
         type: String,
-        enum: ["Hike", "Backpack"],
-        default: "Backpack"
+        enum: ["hiking", "backpacking"],
+        default: "backpacking"
     },
     name: String,
     region: [regionSchema],

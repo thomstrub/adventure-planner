@@ -182,6 +182,34 @@
                 
                 
             </div>
+
+            <div class="row"> <!-------------related backpacks-------------->
+                <div class="col">
+                    <label>Related Adventures: </label>
+                </div>
+                
+                <div class="col">
+                    <div class="form-check form-check-inline">
+                        
+                        <%adventures.forEach((a) => { %>
+
+<!---------------------------related backpacks must share subregion. a backpack cannot be related to itself--------------------------------------->
+
+                            <% if(backpack.region[0].subRegion === a.region[0].subRegion){ %>
+                                <% if(!backpack._id.equals(a._id)) { %>
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" id="related-adventure" name="/adventures/<%=a.adventureType%>/<%=a._id%>">
+                                        <label class="form-check-label" for="related-adventure"><%=a.name%></label>
+                                    </div>
+                                <% } %>
+                                
+
+                                <% }%>
+                            
+                       <% }) %>
+                    </div>
+                </div>
+            </div>
             
             <button type="submit">Submit Changes</button>
         
