@@ -35,10 +35,10 @@ const hikeSchema = new mongoose.Schema({
     elevationGain: String,
     highPoint: String,
     roundtrip: String,
-    features: {
+    features: [{
         type: String,
         enum: ['Epic View Point', 'Cool Water Feature']
-    },
+    }],
     meltout: {
         type: String,
         enum: ['May', 'June', 'July', 'August']

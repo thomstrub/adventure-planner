@@ -55,7 +55,7 @@
                                 <div class="col">
                                     <h3>Features:</h3>
                                     <p>
-                                        <%= typeof backpack.features === String ? backpack.features : 'This hike has it all'%>
+                                        <%= backpack.features.length < 2 ? backpack.features[0] : 'This hike has it all'%>
 
                                     </p>
                                 </div>

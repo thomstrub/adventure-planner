@@ -50,6 +50,11 @@ function create(req, res) {
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
     
+    // push to features array
+    req.body.features = [];
+    if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
+    if(req.body.epicView) req.body.features.push(req.body.epicView);
+
 
     req.body.region = {
         primary: req.body.primary,
@@ -142,6 +147,14 @@ async function update(req, res) {
             secondary: req.body.secondary,
             subRegion: req.body.subRegion
         }
+
+        // push to features array
+        req.body.features = [];
+        if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
+        if(req.body.epicView) req.body.features.push(req.body.epicView);
+
+
+
         // change on to Boolean
         req.body.waterSources = !!req.body.waterSources;
         req.body.riverCrossings = !!req.body.riverCrossings;
@@ -152,7 +165,7 @@ async function update(req, res) {
             console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             backpackObj[key] = req.body[key];
         }
-
+        console.log(req.body, "req.body <----------- bp update")
 
         await backpackObj.save();
         res.redirect(`/adventures/backpacking/${req.params.id}`);

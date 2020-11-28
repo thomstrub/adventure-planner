@@ -62,7 +62,10 @@ function create(req, res) {
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
 
-   
+   // push to features array
+   req.body.features = [];
+   if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
+   if(req.body.epicView) req.body.features.push(req.body.epicView);
 
     req.body.region = {
         primary: req.body.primary,
@@ -162,11 +165,16 @@ async function update(req, res) {
         req.body.scrambling = !!req.body.scrambling;
         req.body.carCamping = !!req.body.carCamping;
 
+        // push to features array
+        req.body.features = [];
+        if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
+        if(req.body.epicView) req.body.features.push(req.body.epicView);
+
         for (const key in req.body) {
             console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             hikeObj[key] = req.body[key];
         }
-
+        console.log(req.body, "req.body <-------------- update")
 
         await hikeObj.save();
         res.redirect(`/adventures/hiking/${req.params.id}`);
