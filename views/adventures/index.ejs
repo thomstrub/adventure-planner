@@ -12,7 +12,7 @@
     <h1>Adventures</h1>
 
     <div class="row">
-        <div class="col-md-4 offset-2">
+        <div class="col">
             <div id="typeSelect">
                 <select id="typeSelectSelect">
                     <option value="all">All Adventures</option>
@@ -37,7 +37,7 @@
     </thead>
 
     <% adventures.forEach((a) => { %>
-            <tr class="<%=a.adventureType%>">
+            <tr class="<%=a.adventureType%> <%=a.region[0].primary%>">
                 <td><a href=<%=a.detailsLink%>><%= a.name %></a></td>
                 <td><%=a.adventureType%></td>
                 <td><%= a.region[0].subRegion %></td>
@@ -63,23 +63,26 @@
     let select = document.getElementById('typeSelectSelect');
     let hikingElements = document.querySelectorAll('.Hike');
     let backpackingElements = document.querySelectorAll('.Backpack');
+    let backpack = backpackingElements[0];
 
     console.log(select);
     select.addEventListener('change', function (e){
         console.log(e.target.value, 'hitting target');
         let val = e.target.value;
         if(val === 'hiking'){
-            backpackingElements[0].style.display = "none"
+            backpackingElements.forEach((element) => {
+                element.style.display = 'none';
+            })
             hikingElements.forEach((element) => {
                 console.log(element, "hike element")
                 element.style.display = 'table-row';
             })
-        } if(val === 'backpacking'){
+        } else if(val === 'backpacking'){
             backpackingElements.forEach((element) => {
-                element.style.display = 'block';
+                element.style.display = 'table-row';
             })
             hikingElements.forEach((element) => {
-                element.style.display = 'table-row';
+                element.style.display = 'none';
             })
         }
         
