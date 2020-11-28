@@ -20,6 +20,14 @@
                     <option value="backpacking">Backpacking</option>
                 </select>
             </div>
+            <div id="primarySelect">
+                <select id="primarySelectSelect">
+                    <option value="all">All Adventures</option>
+                    <option value="EasternCascades">Eastern Cascades</option>
+                    <option value="WesternCascades">Western Cascades</option>
+                    <option value="OlympicPenninsula">Olympic Penninsula</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -37,7 +45,7 @@
     </thead>
 
     <% adventures.forEach((a) => { %>
-            <tr class="<%=a.adventureType%> <%=a.region[0].primary%>">
+            <tr class="<%=a.adventureType%> <%=a.region[0].primary.replace( /\s/g, '')%>">
                 <td><a href=<%=a.detailsLink%>><%= a.name %></a></td>
                 <td><%=a.adventureType%></td>
                 <td><%= a.region[0].subRegion %></td>
@@ -60,11 +68,23 @@
 </body>
 
 <script type="text/javascript">
+
+// ---------------------------- cached elements ---------------------------------//
+
     let select = document.getElementById('typeSelectSelect');
     let hikingElements = document.querySelectorAll('.Hike');
     let backpackingElements = document.querySelectorAll('.Backpack');
-    let backpack = backpackingElements[0];
+    
+    
+    let primarySelect = document.getElementById('primarySelectSelect');
+    let easternElements = document.querySelectorAll('.EasternCascades');
+    let westernElements = document.querySelectorAll('.WesternCascades');
+    let olympicElements = document.querySelectorAll('.OlympicPenninsula');
 
+
+//----------------------------- event listeners ----------------------------------//
+
+//--- filter by adventure type
     console.log(select);
     select.addEventListener('change', function (e){
         console.log(e.target.value, 'hitting target');
@@ -95,6 +115,62 @@
             })
         }
     })
+
+
+//--- filter by primary region
+    console.log(primarySelect);
+    primarySelect.addEventListener('change', function (e){
+        console.log(e.target.value, 'hitting target');
+        let val = e.target.value;
+        switch (val) {
+            case 'EasternCascades':
+                westernElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                easternElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                break;
+            case 'WesternCascades':
+                westernElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                easternElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+            case 'OlympicPenninsula':
+                westernElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                olympicElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                easternElements.forEach((element) => {
+                    element.style.display = 'none';
+                });
+                break;
+            case 'all':
+                westernElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                olympicElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                easternElements.forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+                break;
+        }
+    })
+        
+
     
 </script>
 
