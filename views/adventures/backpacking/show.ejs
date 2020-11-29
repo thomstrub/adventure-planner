@@ -108,6 +108,19 @@
                                 </div>
                             </div>
 
+                                                        <!---------related adventures---------->
+                            <div class="row">
+                                <% backpack.relatedAdventures.forEach((b) => { %>
+                                    <% let name;%>
+                                    <% adventures.forEach((a) => { %>
+                                        <%let stringId = a._id.toString() %>
+                                        <%if(stringId === b.slice(-24)) name = a.name; %>
+                                    <% }) %>
+                                    <div class="col">
+                                        <a href="<%=b%>"><%=name%></a>
+                                    </div>
+                                    <% })%>
+                            </div>
                         </div>
                 </div>
             </div>

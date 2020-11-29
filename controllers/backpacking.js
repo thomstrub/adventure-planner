@@ -82,14 +82,37 @@ function create(req, res) {
 
 async function show(req, res) {
     try{
+        //  related hikes
+        let user = req.user;
+        const allHikes = await Hike.find({});
+        const allBackpacks = await Backpack.find({});
+        let userAdventures = [];
+
+        // filter allHikes to just userHikes
+        let stringId = user.id.toString()
+
+        // let userHikes = [];
+        allBackpacks.forEach((b) => {
+
+            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
+            if(b.userId === stringId) {
+                userAdventures.push(b);
+            }
+        });
+
+        allHikes.forEach((h) => {
+            if(h.userId === stringId) {
+                userAdventures.push(h);
+            }
+        });
         
         const backpackObj = await Backpack.findById(req.params.id);
-        console.log(backpackObj, "hitting the backpackObj ------<-------<-------")
         res.render('adventures/backpacking/show', {
             backpack: backpackObj,
             title: backpackObj.name,
             navBar: nav,
-            keys
+            keys,
+            adventures: userAdventures
         });
 
     } catch(err){
@@ -120,7 +143,6 @@ async function edit(req, res) {
         });
 
         allHikes.forEach((h) => {
-            
             if(h.userId === stringId) {
                 userAdventures.push(h);
             }
@@ -153,20 +175,60 @@ async function update(req, res) {
         if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
         if(req.body.epicView) req.body.features.push(req.body.epicView);
 
-
-
         // change on to Boolean
         req.body.waterSources = !!req.body.waterSources;
         req.body.riverCrossings = !!req.body.riverCrossings;
         req.body.scrambling = !!req.body.scrambling;
         req.body.carCamping = !!req.body.carCamping;
 
+
+        //  related hikes
+        let user = req.user;
+        const allHikes = await Hike.find({});
+        const allBackpacks = await Backpack.find({});
+        let userAdventures = [];
+
+        // filter allHikes to just userHikes
+        let stringId = user.id.toString()
+
+        // let userHikes = [];
+        allBackpacks.forEach((b) => {
+
+            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
+            if(b.userId === stringId) {
+                userAdventures.push(b);
+            }
+        });
+
+        allHikes.forEach((h) => {
+            if(h.userId === stringId) {
+                userAdventures.push(h);
+            }
+        });
+
+
+        // search though keys for related hike key
+        let bodyKeys = Object.keys(req.body);
+        console.log(bodyKeys, "bodyKeys update <-------------------")
+        let relatedArray = [];
+        
+        userAdventures.forEach((a) => {
+            let aIdString = a._id.toString();
+            console.log(relatedArray, "relatedArray-------------------%%%%%%%%");
+
+            if(bodyKeys.includes(aIdString)) relatedArray.push(req.body[a._id]);
+
+        });
+
+        req.body.relatedAdventures = relatedArray;
+        console.log(req.body.relatedAdventures, "req.body.relatedAdventures");
+        
         for (const key in req.body) {
             console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             backpackObj[key] = req.body[key];
         }
         console.log(req.body, "req.body <----------- bp update")
-
+        console.log(backpackObj, "backpackObj ---- ----- update")
         await backpackObj.save();
         res.redirect(`/adventures/backpacking/${req.params.id}`);
     } catch (err) {

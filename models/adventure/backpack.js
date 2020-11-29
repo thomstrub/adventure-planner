@@ -20,7 +20,12 @@ const regionSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Create your User Model
+// const relatedAdventureSchema = new mongoose.Schema({
+//     name: {type: String},
+//     link: {type: String}
+// });
+
+
 const backpackSchema = new mongoose.Schema({
     adventureType: {
         type: String,
@@ -54,6 +59,7 @@ const backpackSchema = new mongoose.Schema({
     reviewLink: String,
     mapLink: String,
     photoLink: String,
+    relatedAdventures: [{type: String}],
     detailsLink: String,
     userId: String
 }, {
