@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 offset-3">
+            <div class="col-md-10 offset-1">
                 <div>
                         <div>
                             <div class="row">
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="col">
                                     <h4>
-                                        <%= backpack.riverCrossings ? 'There are substantial rivers / creek crossings.' : 'No anticipated river crossings.'%>
+                                        <%= backpack.riverCrossings ? 'Substantial river / creek crossings.' : 'No known river crossings.'%>
                                     </h4>
                                 </div>
                                 <div class="col">
@@ -97,6 +97,9 @@
                             
                             <!---Links----->
                             <div class="row">
+                                <div class="col"><h4>Links:</h4></div>
+                            </div>
+                            <div class="row">
                                 <div class="col">
                                     <a href="<%=backpack.weatherLink%>">Weather Forecast</a>
                                 </div>
@@ -109,6 +112,12 @@
                             </div>
 
                                                         <!---------related adventures---------->
+                            
+                            <div class="row">
+                                <%if(backpack.relatedAdventures.length > 0){ %>
+                                    <div class="col"><h4>Related Adventures:</h4></div>
+                                <% } %>
+                            </div>
                             <div class="row">
                                 <% backpack.relatedAdventures.forEach((b) => { %>
                                     <% let name;%>

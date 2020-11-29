@@ -56,6 +56,7 @@ const hikeSchema = new mongoose.Schema({
     reviewLink: String,
     mapLink: String,
     photoLink: String,
+    relatedAdventures: [{type: String}],
     detailsLink: String,
     userId: String
 

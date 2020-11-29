@@ -223,6 +223,8 @@ async function update(req, res) {
         req.body.relatedAdventures = relatedArray;
         console.log(req.body.relatedAdventures, "req.body.relatedAdventures");
         
+
+        // add req.body to model object
         for (const key in req.body) {
             console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             backpackObj[key] = req.body[key];

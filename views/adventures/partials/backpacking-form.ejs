@@ -73,10 +73,14 @@
                 <div class="form-check form-check-inline">
                     <div class="row">
                         <div class="col">
-                            <input class="form-check-input" type="checkbox" class="form-check-input" id="water-feature" name="waterFeature" value="Cool Water Feature">
-                            <label class="form-check-label" for="water-feature">Water Feature</label>
-                            <input class="form-check-input" type="checkbox" class="form-check-input" id="epic-view" name="epicView" value="Epic View Point" checked>
-                            <label class="form-check-label" for="epic-view">Epic View</label>
+                            <div class="check">
+                                <input class="form-check-input" type="checkbox" class="form-check-input" id="water-feature" name="waterFeature" value="Cool Water Feature">
+                                <label class="form-check-label" for="water-feature">Water Feature</label>
+                            </div>
+                            <div class="check">
+                                <input class="form-check-input" type="checkbox" class="form-check-input" id="epic-view" name="epicView" value="Epic View Point" checked>
+                                <label class="form-check-label" for="epic-view">Epic View</label>
+                            </div>
                         </div>
                         
                     </div>
@@ -99,11 +103,11 @@
         <div class="row">
             <div class="col">
                 <label>Travel Time</label>
-                <input type="text" name="travelTime">
+                <input type="text" class="form-control" name="travelTime">
             </div>
             <div class="col">
                 <label>Popularity</label>
-                <select name="popularity">
+                <select class="form-control" name="popularity">
                 <option value="Low" selected>Low</option>
                 <option value="Medium-Low">Medium-Low</option>
                 <option value="Medium">Medium</option>
@@ -116,12 +120,12 @@
             
             <div class="col">
                 <div class="form-check form-check-inline">
-                <div>
+                <div class="check">
                     <input type="checkbox" class="form-check-input" id="waterSources" name="waterSources">
                     <label class="form-check-label" for="waterSources">Dependable Water Sources</label>
                 </div>
                 
-                <div>
+                <div class="check">
                     <input type="checkbox" class="form-check-input" id="river-crossing" name="riverCrossings" checked>
                     <label class="form-check-label" for="river-crossing">Known River Crossings</label>
                 </div>
@@ -135,12 +139,12 @@
             
             <div class="col">
                 <div class="form-check form-check-inline">
-                <div>
+                <div class="check">
                     <input type="checkbox" class="form-check-input" id="scrambling" name="scrambling" checked>
                     <label class="form-check-label" for="scrambling">Scrables On This Route</label>
                 </div>
                 
-                <div>
+                <div class="check">
                     <input type="checkbox" class="form-check-input" id="car-camping" name="carCamping" checked>
                     <label class="form-check-label" for="car-camping">Good Car-Camping Spots Nearby</label>
                 </div>

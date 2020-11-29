@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 offset-3">
+            <div class="col-md-10 offset-1">
                 <div>
                         <div>
                             <div class="row">
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h3>Number of Days:</h3>
-                                    <p><%=hike.numberOfDays%></p>
+                                    <p>Day Hike</p>
                                 </div>
                                 <div class="col">
                                     <h3>Total Eleveation Gain:</h3>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="col">
                                     <h4>
-                                        <%= hike.riverCrossings ? 'There are substantial rivers / creek crossings.' : 'No anticipated river crossings.'%>
+                                        <%= hike.riverCrossings ? 'Substantial river / creek crossings.' : 'No known river crossings.'%>
                                     </h4>
                                 </div>
                                 <div class="col">
@@ -97,6 +97,9 @@
                             
                             <!---Links----->
                             <div class="row">
+                                <div class="col"><h4>Links:</h4></div>
+                            </div>
+                            <div class="row">
                                 <div class="col">
                                     <a href="<%=hike.weatherLink%>">Weather Forecast</a>
                                 </div>
@@ -108,18 +111,40 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <%if(hike.relatedAdventures.length > 0){ %>
+                                    <div class="col"><h4>Related Adventures:</h4></div>
+                                <% } %>
+                                
+                            </div>
+                            <div class="row">
+                                <% hike.relatedAdventures.forEach((b) => { %>
+                                    <% let name;%>
+                                    <% adventures.forEach((a) => { %>
+                                        <%let stringId = a._id.toString() %>
+                                        <%if(stringId === b.slice(-24)) name = a.name; %>
+                                    <% }) %>
+                                    <div class="col">
+                                        <a href="<%=b%>"><%=name%></a>
+                                    </div>
+                                    <% })%>
+                            </div>
+
                         </div>
                 </div>
+                <div class="btn btn-primary">
+                    <a class="div-button" href="/adventures/hiking/<%=hike.id%>/edit">Edit This Hiking Adventure</a>
+                </div>
+        
+                <form action="/adventures/hiking/<%= hike._id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+
+
             </div>
         </div>
-        <div>
-            <a href="/adventures/hiking/<%=hike.id%>/edit">Edit This Hiking Adventure</a>
-        </div>
-
-        <form action="/adventures/hiking/<%= hike._id %>?_method=DELETE"
-            class="delete-form" method="POST">
-            <button type="submit">Delete</button>
-        </form>
+        
         
 
     </div><!---container-->

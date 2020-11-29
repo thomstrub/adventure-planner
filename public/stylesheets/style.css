@@ -61,3 +61,26 @@ footer {
 .show-pic {
   max-width: 600px;
 }
+a {
+  font-size: large;
+}
+
+.div-button a{
+  color: white;
+}
+
+.div-button:link{
+  color: white;
+}
+
+.div-button:visited{
+  color: white;
+}
+
+.check {
+  margin: 10px;
+}
+
+#adventure-labels{
+  text-align: left;
+}

@@ -4,14 +4,14 @@
     <%- include('./partials/nav') %>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-10 offset-1">
                 <h1>Choose Your Adventure</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 offset-2">
+            <div class="col-md-4 offset-1">
                 <div id="typeSelect">
-                    <select id="typeSelectSelect">
+                    <select class="form-control" id="typeSelectSelect">
                         <option value="hiking">Hiking</option>
                         <option value="backpacking">Backpacking</option>
                     </select>
@@ -20,7 +20,7 @@
         </div>
         
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-10 offset-1">
                 <div id="hiking-form">
                     <%-include('./partials/hiking-form')%>
                 </div>
