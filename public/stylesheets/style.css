@@ -63,16 +63,12 @@ a {
   font-size: large;
 }
 
-.div-button a{
-  color: white;
-}
-
-.div-button:link{
-  color: white;
-}
-
-.div-button:visited{
-  color: white;
+html { 
+  background: url("https://i.imgur.com/j99HTWU.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .check {
@@ -86,17 +82,19 @@ a {
 }
 
 .login-bg{
-  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(241, 241, 235, 0.5)),
-                    url("https://i.imgur.com/j99HTWU.jpg");
-  min-height: 100vw;
-  padding: 5vw;
-  
+  padding: 2vw;
+  background: url("https://i.imgur.com/j99HTWU.jpg") no-repeat center center fixed;
 }
 
+/* .back-layer {
+  background:transparent;
+
+} */
 
 .index-bg{
   background-color: white;
   padding: 1vw;
+  max-width: 90vw;
   border-radius: 10px;
 }
 
@@ -107,6 +105,7 @@ a {
 
 .jumbotron{
   background-image: url("https://i.imgur.com/S9qW3yb.png");
+  
 }
 
 .center {
@@ -128,4 +127,15 @@ a {
 .div-button {
   height: 38px;
   margin-right: 20px;
+}
+.div-button a{
+  color: white;
+}
+
+.div-button:link{
+  color: white;
+}
+
+.div-button:visited{
+  color: white;
 }

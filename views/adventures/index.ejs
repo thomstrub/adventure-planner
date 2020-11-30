@@ -7,8 +7,9 @@
   
 
   <!-- Page Content -->
-  <div class="container-flex login-bg">
-  <div class="container index-bg">
+    <div class="container-flex login-bg">
+    <div class="container index-bg">
+        <div class="index-bg">
     <div>
         <h1>Adventures</h1>
     </div>
@@ -75,8 +76,9 @@
 </div>
     <!-- FOOTER -->
 <%- include('./partials/footer') %>
-  
-  </div>
+</div>
+</div>
+</div>
   <!-- /.container -->
 
 
@@ -109,7 +111,7 @@
 //----------------------------- event listeners ----------------------------------//
 
 //--- filter by adventure type
-    console.log(select);
+    
     select.addEventListener('change', function (e){
         console.log(e.target.value, 'hitting target');
         let val = e.target.value;
@@ -118,13 +120,40 @@
                 element.style.display = 'none';
             })
             hikingElements.forEach((element) => {
-                console.log(element, "hike element")
-                element.style.display = 'table-row';
-            })
+                if(primarySelect.value === "EasternCascades"){
+                    if(element.className.includes('EasternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "WesternCascades"){
+                    if(element.className.includes('WesternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "OlympicPenninsula"){
+                    if(element.className.includes('OlympicPenninsula')){
+                            element.style.display = 'table-row';
+                        }
+                } else {
+                    element.style.display = 'table-row';
+                }
+            });
         } else if(val === 'backpacking'){
             backpackingElements.forEach((element) => {
-                element.style.display = 'table-row';
-            })
+                if(primarySelect.value === "EasternCascades"){
+                    if(element.className.includes('EasternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "WesternCascades"){
+                    if(element.className.includes('WesternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "OlympicPenninsula"){
+                    if(element.className.includes('OlympicPenninsula')){
+                            element.style.display = 'table-row';
+                        }
+                } else {
+                    element.style.display = 'table-row';
+                }
+            });
             hikingElements.forEach((element) => {
                 element.style.display = 'none';
             })
@@ -132,17 +161,46 @@
         
         else {
             backpackingElements.forEach((element) => {
-                element.style.display = 'table-row';
+                if(primarySelect.value === "EasternCascades"){
+                    if(element.className.includes('EasternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "WesternCascades"){
+                    if(element.className.includes('WesternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "OlympicPenninsula"){
+                    if(element.className.includes('OlympicPenninsula')){
+                            element.style.display = 'table-row';
+                        }
+                } else {
+                    element.style.display = 'table-row';
+                }
             })
             hikingElements.forEach((element) => {
-                element.style.display = 'table-row';
+                if(primarySelect.value === "EasternCascades"){
+                    if(element.className.includes('EasternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "WesternCascades"){
+                    if(element.className.includes('WesternCascades')){
+                            element.style.display = 'table-row';
+                        }
+                } else if(primarySelect.value === "OlympicPenninsula"){
+                    if(element.className.includes('OlympicPenninsula')){
+                            element.style.display = 'table-row';
+                        }
+                } else {
+                    element.style.display = 'table-row';
+                }
             })
         }
     })
 
+// find a value for the other inputs - query them with document.querySelector
 
 //--- filter by primary region
-    console.log(primarySelect);
+    console.log(easternElements, "easternElements<-------");
     primarySelect.addEventListener('change', function (e){
         console.log(e.target.value, 'hitting target');
         let val = e.target.value;
@@ -155,12 +213,44 @@
                     element.style.display = 'none';
                 });
                 easternElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                        if(element.className.includes('hiking')){
+                                console.log("includes hiking");
+                                element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 break;
+                
+                
             case 'WesternCascades':
                 westernElements.forEach((element) => {
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                        }
+                } else if(select.value === "backpacking"){
+                    
+                    if(element.className.includes('backpacking')){
+                            
+                            element.style.display = 'table-row';
+                        }
+                
+                } else {
                     element.style.display = 'table-row';
+                }
                 });
                 olympicElements.forEach((element) => {
                     element.style.display = 'none';
@@ -174,7 +264,22 @@
                     element.style.display = 'none';
                 });
                 olympicElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 easternElements.forEach((element) => {
                     element.style.display = 'none';
@@ -182,13 +287,58 @@
                 break;
             case 'all':
                 westernElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 easternElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 break;
         }
@@ -202,7 +352,22 @@
         switch (val) {
             case 'NorthCascades':
                 northElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 centralElements.forEach((element) => {
                     element.style.display = 'none';
@@ -222,7 +387,22 @@
                     element.style.display = 'none';
                 });
                 centralElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 southElements.forEach((element) => {
                     element.style.display = 'none';
@@ -242,7 +422,22 @@
                     element.style.display = 'none';
                 });
                 southElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicMountainElements.forEach((element) => {
                     element.style.display = 'none';
@@ -262,7 +457,22 @@
                     element.style.display = 'none';
                 });
                 olympicMountainElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicCoastElements.forEach((element) => {
                     element.style.display = 'none';
@@ -282,24 +492,114 @@
                     element.style.display = 'none';
                 });
                 olympicCoastElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 break;
             case 'all':
                 westernElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 easternElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicMountainElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 olympicCoastElements.forEach((element) => {
-                    element.style.display = 'table-row';
+                    if(select.value === "hiking"){
+                    
+                    if(element.className.includes('hiking')){
+                            console.log("includes hiking");
+                            element.style.display = 'table-row';
+                            }
+                    } else if(select.value === "backpacking"){
+                        
+                        if(element.className.includes('backpacking')){
+                                
+                                element.style.display = 'table-row';
+                            }
+                    
+                    } else {
+                        element.style.display = 'table-row';
+                    }
                 });
                 break;
         }
