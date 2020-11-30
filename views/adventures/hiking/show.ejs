@@ -2,12 +2,27 @@
 
 <body>
     <%- include('../partials/nav') %>
-    <div class="container">
-        <div>
+    <div class="container-flex login-bg">
+    <div class="container index-bg">
+        <div class="show-page">
             <h1><%= hike.name%></h1>
+
+<!------------Edit / Delete requests------------------->
+
+            <div class="show-page">
+                <div class="btn btn-primary div-button">
+                    <a href="/adventures/hiking/<%=hike.id%>/edit">Edit</a>
+                </div>
+        
+                <form action="/adventures/hiking/<%= hike._id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+            </div>
+            
         </div>
         <div class="row">
-            <div class="col-md-6 offset-3">
+            <div class="col center">
                 <div>
                     <img class="show-pic" src=<%= hike.photoLink%> title="<%=hike.name%>" >
                 </div>
@@ -132,14 +147,7 @@
 
                         </div>
                 </div>
-                <div class="btn btn-primary">
-                    <a class="div-button" href="/adventures/hiking/<%=hike.id%>/edit">Edit This Hiking Adventure</a>
-                </div>
-        
-                <form action="/adventures/hiking/<%= hike._id %>?_method=DELETE"
-                    class="delete-form" method="POST">
-                    <button class="btn btn-primary" type="submit">Delete</button>
-                </form>
+                
 
 
             </div>
@@ -148,7 +156,7 @@
         
 
     </div><!---container-->
-   
+</div>
 </body>
 
 

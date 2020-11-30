@@ -1,7 +1,12 @@
 <%- include('../partials/header') %>
 <body>
     <%- include('../partials/nav') %>
-    <div class="container">
+
+    <!-- Page Content -->
+
+
+  <div class="container-flex login-bg">
+    <div class="container index-bg">
         <h1>Edit This Backpacking Trip</h1>
         <form action="/adventures/backpacking/<%=backpack.id%>?_method=PUT"
             method="POST" class="edit-form" autocomplete="off">
@@ -218,7 +223,7 @@
 
         </form>
     </div>
-    
+    </div> <!---------container------->
 
 
 </body>

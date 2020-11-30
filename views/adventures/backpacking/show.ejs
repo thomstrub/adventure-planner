@@ -2,12 +2,26 @@
 
 <body>
     <%- include('../partials/nav') %>
-    <div class="container">
-        <div>
+    <div class="container-flex login-bg">
+    <div class="container index-bg">
+        <div class="show-page">
             <h1><%= backpack.name%></h1>
+
+<!------------Edit / Delete requests------------------->
+
+            <div class="show-page">
+                <div class="btn btn-primary div-button">
+                    <a href="/adventures/backpacking/<%=backpack.id%>/edit">Edit</a>
+                </div>
+        
+                <form action="/adventures/backpacking/<%= backpack._id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-6 offset-3">
+            <div class="col center">
                 <div>
                     <img class="show-pic" src=<%= backpack.photoLink%> title="<%=backpack.name%>" >
                 </div>
@@ -135,20 +149,9 @@
             </div>
         </div>
 
-<!------------Edit / Delete requests------------------->
-
-        <div>
-            <a href="/adventures/backpacking/<%=backpack.id%>/edit">Edit This Backpacking Adventure</a>
-        </div>
-
-        <form action="/adventures/backpacking/<%= backpack._id %>?_method=DELETE"
-            class="delete-form" method="POST">
-            <button type="submit">Delete</button>
-        </form>
-
 
     </div><!---container-->
-   
+   </div>
 </body>
 
 
