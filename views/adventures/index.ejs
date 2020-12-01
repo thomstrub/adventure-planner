@@ -120,7 +120,7 @@
         if(val === 'hiking'){
             backpackingElements.forEach((element) => {
                 element.style.display = 'none';
-            })
+            });
             hikingElements.forEach((element) => {
                 if(primarySelect.value === "EasternCascades"){
                     if(element.className.includes('EasternCascades')){
@@ -200,29 +200,30 @@
                         } 
                         }
                 } else {
-                    if(secondarySelect.value === "NorthCascades"){
-                                if(element.className.includes('NorthCascades')){
-                                    element.style.display = 'table-row';
-                                } 
-                        } else if(secondarySelect.value ==="CentralCascades"){
-                            if(element.className.includes('CentralCascades')){
-                                    element.style.display = 'table-row';
-                                }
-                        } else if(secondarySelect.value ==="SouthCascades"){
-                            if(element.className.includes('SouthCascades')){
-                                    element.style.display = 'table-row';
-                                }
-                        } else if(secondarySelect.value ==="OlympicMountains"){
-                            if(element.className.includes('OlympicMountains')){
-                                    element.style.display = 'table-row';
-                                }
-                        } else if(secondarySelect.value ==="OlympicCoast"){
-                            if(element.className.includes('OlympicCoast')){
-                                    element.style.display = 'table-row';
-                                }
-                        } else {
-                            element.style.display = 'table-row';
-                        } 
+                    // if(secondarySelect.value === "NorthCascades"){
+                    //             if(element.className.includes('NorthCascades')){
+                    //                 element.style.display = 'table-row';
+                    //             } 
+                    //     } else if(secondarySelect.value ==="CentralCascades"){
+                    //         if(element.className.includes('CentralCascades')){
+                    //                 element.style.display = 'table-row';
+                    //             }
+                    //     } else if(secondarySelect.value ==="SouthCascades"){
+                    //         if(element.className.includes('SouthCascades')){
+                    //                 element.style.display = 'table-row';
+                    //             }
+                    //     } else if(secondarySelect.value ==="OlympicMountains"){
+                    //         if(element.className.includes('OlympicMountains')){
+                    //                 element.style.display = 'table-row';
+                    //             }
+                    //     } else if(secondarySelect.value ==="OlympicCoast"){
+                    //         if(element.className.includes('OlympicCoast')){
+                    //                 element.style.display = 'table-row';
+                    //             }
+                    //     } else {
+                    //         element.style.display = 'table-row';
+                    //     } 
+                    element.style.display = 'table-row'
                 }
             }
             });

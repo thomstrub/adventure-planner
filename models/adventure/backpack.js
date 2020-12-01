@@ -13,8 +13,8 @@ const regionSchema = new mongoose.Schema({
     subRegion: {
         type: String,
         enum: ['Mt. Baker', 'North Cascades National Park', 'Paysatan', 'Methow / Sawtooth', 'Lake Wenatchee', 'Icicle Creek',
-         'Blue Mountains', 'Entiat', 'Mountain Loop Highway', 'Suiattle River Valley',
-          'Teanaway', 'West Slope', "Steven's Pass", 'Rainy Pass', 'Mount Adams']
+        'Blue Mountains', 'Entiat', 'Mountain Loop Highway', 'Suiattle River Valley',
+         'Teanaway', 'West Slope', "Steven's Pass", 'Rainy Pass', 'Mount Rainier', 'Goat Rocks', 'Mount Adams', 'Northern Olympic Coast', 'Southern Olympic Coast', 'Northern Olympic Mountains', 'Southern Olympic Mountains']
     }
 }, {
     timestamps: true
