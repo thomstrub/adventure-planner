@@ -13,7 +13,7 @@
     <div>
         <h1>Adventures</h1>
     </div>
-
+<!------------------select menus for filter by region------------------------->
     <div class="row">
         <div class="col-md-10" id="adventure-labels">
             <div class="region-btn" id="typeSelect">
@@ -47,6 +47,7 @@
         </div>
     </div>
 
+ <!--------------------Table Headers-------------------->   
 <table class="table">
     <thead>
       <tr>
@@ -59,7 +60,7 @@
         <th></th>
       </tr>
     </thead>
-
+<!--------------------Table Content-------------------->
     <% adventures.forEach((a) => { %>
             <tr class="<%=a.adventureType%> <%=a.region[0].primary.replace( /\s/g, '')%> <%=a.region[0].secondary.replace( /\s/g, '')%>">
                 <td><a href=<%=a.detailsLink%>><%= a.name %></a></td>

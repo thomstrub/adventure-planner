@@ -19,7 +19,7 @@ const nav = {
     
 }
 const keys = Object.keys(nav);
-
+//-----------------------Define regions from model's enum for region select menu on index page
 const region = {
     primary: Hike.schema.path('region.primary').enumValues,
     secondary: Hike.schema.path('region.secondary').enumValues,
@@ -29,7 +29,7 @@ const region = {
 
 //--------------------------------functions---------------------------
 
-//define authorization function
+//----------------define authorization function
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next()
@@ -37,6 +37,8 @@ function isLoggedIn(req, res, next){
         res.redirect('/auth/google');
     }
 }
+
+// ----- legacy (non-functional) code from previous site architecture.
 function newHike(req, res) {
     res.render('adventures/hiking/new', {
         title: 'Plan a Hike',
@@ -46,28 +48,29 @@ function newHike(req, res) {
     })
 }
 
-
+//----------------add a new hike to the database
 function create(req, res) {
     //add userId
     req.body.userId = req.user._id;
-    // change on to Boolean
+    // change checkboxes' 'on' to Boolean
     req.body.waterSources = !!req.body.waterSources;
     req.body.riverCrossings = !!req.body.riverCrossings;
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
 
-   // push to features array
+   // array features are checkboxes, push to features array
    req.body.features = [];
    if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
    if(req.body.epicView) req.body.features.push(req.body.epicView);
 
+   // adjust req.body to match imbeded region schema
     req.body.region = {
         primary: req.body.primary,
         secondary: req.body.secondary,
         subRegion: req.body.subRegion
     }
 
-    // create a new database entry
+    // create a new database entry with the request body
     const hike = new Hike(req.body);
      //add detailsLink
     hike.detailsLink = '/adventures/hiking/';
@@ -90,7 +93,7 @@ async function show(req, res) {
         const allBackpacks = await Backpack.find({});
         let userAdventures = [];
 
-        // filter allHikes to just userHikes
+        // //----------------filter allHikes to just userHikes
         let stringId = user.id.toString()
 
         // let userHikes = [];
@@ -106,6 +109,8 @@ async function show(req, res) {
             }
         });
         const hikeObj = await Hike.findById(req.params.id);
+
+        //----------------render show page
         res.render('adventures/hiking/show', {
             hike: hikeObj,
             title: hikeObj.name,
@@ -118,6 +123,7 @@ async function show(req, res) {
         res.send(err);
     }
 }
+
 
 async function edit(req, res) {
     try{

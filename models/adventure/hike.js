@@ -23,7 +23,7 @@ const regionSchema = new mongoose.Schema({
 
 
 
-// Create your User Model
+
 const hikeSchema = new mongoose.Schema({
     adventureType: {
         type: String,

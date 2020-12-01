@@ -135,6 +135,9 @@
                             <div class="row">
                                 <% hike.relatedAdventures.forEach((b) => { %>
                                     <% let name;%>
+
+
+     <!---------------------------Model data is a URL/ create name using the ID from the URL --------------------->
                                     <% adventures.forEach((a) => { %>
                                         <%let stringId = a._id.toString() %>
                                         <%if(stringId === b.slice(-24)) name = a.name; %>
