@@ -15,22 +15,6 @@ This app was built with the main user persona being my own attempts to research 
 - The user should be able to store a photo and useful links for more context and planning
 - The user must be able to add different adventures related to the current one, just in case a hike could also be a backpacking trip and visa-versa
 
-
-## Planning 
-----
-This project was planned out using [Trello][2] to list out user stories, progress, and to link to wireframes and ER diagrams.
-![Planning](public/images/Project-Screenshots/planning.png)
-
-#### Wireframes
-----
-Project wireframs were sketched out using [Moqups][3] for basic page rendering.  
-![Wire]
-
-
-#### ER Diagram
-----
-This project's ER diagram was sketched out [here][4] using Lucid Chart. 
-![ERD](public/images/Project-Screenshots/erd.png)
 ## Screenshots
 ---
 Landing Page  
@@ -60,7 +44,27 @@ Show Page
 
 ## Getting Started
 ----
+This app is [deployed via Heroku][5] at https://cool-adventure-planner.herokuapp.com/
 
+Login with a Google ID and start planning adventures!
+
+Note: The forms for creating and editing an adventure allows for the user to include a link to a photo. This must be a link to a photo that is hosted somewhere on the internet.
+
+## Planning 
+----
+This project was planned out using [Trello][2] to list out user stories, progress, and to link to wireframes and ER diagrams.
+![Planning](public/images/Project-Screenshots/planning.png)
+
+#### Wireframes
+----
+Project wireframs were sketched out using [Moqups][3] for basic page rendering.  
+![Wire]
+
+
+#### ER Diagram
+----
+This project's ER diagram was sketched out [here][4] using Lucid Chart. 
+![ERD](public/images/Project-Screenshots/erd.png)
 
 ## Next Steps / Ice Box
 ----
@@ -75,3 +79,4 @@ There are a number of items in the [ice box][2] for this project. Since planning
 [2]: https://trello.com/b/VRXEu1fN/hiking-adventure-planner-project-2
 [3]: https://app.moqups.com/c8MML1R5WD/view/page/a649d360b
 [4]: https://lucid.app/lucidchart/fde5f0ef-9576-40c5-9f2b-0c331c32f164/view?page=0_0#?folder_id=home&browser=icon
+[5]: https://cool-adventure-planner.herokuapp.com/
