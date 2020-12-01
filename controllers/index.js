@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+
 module.exports = {
     index,
     dash,
@@ -7,10 +8,11 @@ module.exports = {
 }
 
 
+
 const nav = {
     'Find Adventure': 'adventures',
-    'Add Adventure': 'adventures/new',
-    About: '#'
+    'Add Adventure': 'adventures/new'
+    
 }
 const keys = Object.keys(nav);
 

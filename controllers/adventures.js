@@ -11,8 +11,8 @@ module.exports = {
 }
 const nav = {
     'Find Adventure': '/adventures',
-    'Add Adventure': '/adventures/new',
-    About: '#'
+    'Add Adventure': '/adventures/new'
+    
 }
 const keys = Object.keys(nav);
 
@@ -37,7 +37,6 @@ async function index(req, res, next) {
 
             // concatonate details link
             b.detailsLink += b._id;
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -52,7 +51,6 @@ async function index(req, res, next) {
                 userAdventures.push(h);
             }
         });
-        console.log(userAdventures, "<--------- userAdventures ------")
         res.render('adventures/index', {
             title: 'Adventure Home',
             navBar: nav,

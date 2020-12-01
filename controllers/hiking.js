@@ -5,7 +5,6 @@ const Backpack = require('../models/adventure/backpack')
 module.exports = {
     isLoggedIn,
     new: newHike,
-    index,
     create,
     show,
     edit,
@@ -16,8 +15,8 @@ module.exports = {
 // -------------------------constants for render function--------------
 const nav = {
     'Find Adventure': '/adventures',
-    'Add Adventure': '/adventures/new',
-    About: '#'
+    'Add Adventure': '/adventures/new'
+    
 }
 const keys = Object.keys(nav);
 
@@ -47,15 +46,10 @@ function newHike(req, res) {
     })
 }
 
-function index(req, res) {
-    console.log('index call');
-}
 
 function create(req, res) {
     //add userId
-    console.log(req.user, "req.user <------------------------")
     req.body.userId = req.user._id;
-    console.log(req.body.userId)
     // change on to Boolean
     req.body.waterSources = !!req.body.waterSources;
     req.body.riverCrossings = !!req.body.riverCrossings;
@@ -79,7 +73,6 @@ function create(req, res) {
     hike.detailsLink = '/adventures/hiking/';
     //add userId 
     hike.userId = req.user._id;
-    console.log(hike.userId, "hike.userId from create <------------")
     hike.save(function(err){
         
     //errors
@@ -102,8 +95,6 @@ async function show(req, res) {
 
         // let userHikes = [];
         allBackpacks.forEach((b) => {
-
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -143,8 +134,6 @@ async function edit(req, res) {
 
         // let userHikes = [];
         allBackpacks.forEach((b) => {
-
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -156,9 +145,6 @@ async function edit(req, res) {
                 userAdventures.push(h);
             }
         });
-
-
-
 
         res.render('adventures/hiking/edit', {
             hike: hikeObj,
@@ -193,58 +179,48 @@ async function update(req, res) {
         if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
         if(req.body.epicView) req.body.features.push(req.body.epicView);
 
-                //  related hikes
-                let user = req.user;
-                const allHikes = await Hike.find({});
-                const allBackpacks = await Backpack.find({});
-                let userAdventures = [];
-        
-                // filter allHikes to just userHikes
-                let stringId = user.id.toString()
-        
-                // let userHikes = [];
-                allBackpacks.forEach((b) => {
-        
-                    console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
-                    if(b.userId === stringId) {
-                        userAdventures.push(b);
-                    }
-                });
-        
-                allHikes.forEach((h) => {
-                    if(h.userId === stringId) {
-                        userAdventures.push(h);
-                    }
-                });
-        
-        
-                // search though keys for related hike key
-                let bodyKeys = Object.keys(req.body);
-                console.log(bodyKeys, "bodyKeys update <-------------------")
-                let relatedArray = [];
-                
-                userAdventures.forEach((a) => {
-                    let aIdString = a._id.toString();
-                    console.log(relatedArray, "relatedArray-------------------%%%%%%%%");
-        
-                    if(bodyKeys.includes(aIdString)) relatedArray.push(req.body[a._id]);
-        
-                });
-        
-                req.body.relatedAdventures = relatedArray;
-                console.log(req.body.relatedAdventures, "req.body.relatedAdventures");
+        //  related hikes setup
+        let user = req.user;
+        const allHikes = await Hike.find({});
+        const allBackpacks = await Backpack.find({});
+        let userAdventures = [];
 
+        // filter allHikes to just userHikes
+        let stringId = user.id.toString()
+
+        // let userHikes = [];
+        allBackpacks.forEach((b) => {
+            if(b.userId === stringId) {
+                userAdventures.push(b);
+            }
+        });
+
+        allHikes.forEach((h) => {
+            if(h.userId === stringId) {
+                userAdventures.push(h);
+            }
+        });
+
+
+        // search though keys for related hike key
+        let bodyKeys = Object.keys(req.body);
+        let relatedArray = [];
+        
+        userAdventures.forEach((a) => {
+            let aIdString = a._id.toString();
+            if(bodyKeys.includes(aIdString)) relatedArray.push(req.body[a._id]);
+
+        });
+
+        req.body.relatedAdventures = relatedArray;
 
         for (const key in req.body) {
-            console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             hikeObj[key] = req.body[key];
         }
-        console.log(req.body, "req.body <-------------- update")
 
         await hikeObj.save();
         res.redirect(`/adventures/hiking/${req.params.id}`);
     } catch (err) {
-        console.log("update error");
         res.send(err);
     }
 }
@@ -256,7 +232,6 @@ async function deleteHike(req, res){
         res.redirect('/adventures');
 
     } catch (err){
-        console.log('delete error')
         res.send(err);
     }
 }

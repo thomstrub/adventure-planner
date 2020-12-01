@@ -15,8 +15,8 @@ module.exports = {
 // Constants for use in rendering
 const nav = {
     'Find Adventure': '/adventures',
-    'Add Adventure': '/adventures/new',
-    About: '#'
+    'Add Adventure': '/adventures/new'
+    
 }
 const keys = Object.keys(nav);
 
@@ -40,17 +40,15 @@ function isLoggedIn(req, res, next){
 
 function create(req, res) {
     //add userId
-    console.log(req.user, "req.user <------------------------")
     req.body.userId = req.user._id;
 
-    console.log(req.body, "req.body <------------------------")
     // change on to Boolean
     req.body.waterSources = !!req.body.waterSources;
     req.body.riverCrossings = !!req.body.riverCrossings;
     req.body.scrambling = !!req.body.scrambling;
     req.body.carCamping = !!req.body.carCamping;
     
-    // push to features array
+    // each feature is pushed to features array
     req.body.features = [];
     if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
     if(req.body.epicView) req.body.features.push(req.body.epicView);
@@ -72,7 +70,6 @@ function create(req, res) {
     backpack.userId = req.user._id;
 
     backpack.save(function(err){
-        console.log(backpack, "backpack <----------------");
     //errors
         if(err) return res.redirect('/adventures');
         res.redirect('/adventures');
@@ -82,7 +79,7 @@ function create(req, res) {
 
 async function show(req, res) {
     try{
-        //  related hikes
+        //  related hikes setup
         let user = req.user;
         const allHikes = await Hike.find({});
         const allBackpacks = await Backpack.find({});
@@ -93,8 +90,6 @@ async function show(req, res) {
 
         // let userHikes = [];
         allBackpacks.forEach((b) => {
-
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -130,13 +125,11 @@ async function edit(req, res) {
         const allBackpacks = await Backpack.find({});
         let userAdventures = [];
 
-        // filter allHikes to just userHikes
+        // filter allHikes to just userHikes - make sure the user only sees their entries
         let stringId = user.id.toString()
 
         // let userHikes = [];
         allBackpacks.forEach((b) => {
-
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -170,7 +163,7 @@ async function update(req, res) {
             subRegion: req.body.subRegion
         }
 
-        // push to features array
+        // each feature is pushed to features array
         req.body.features = [];
         if(req.body.waterFeature) req.body.features.push(req.body.waterFeature);
         if(req.body.epicView) req.body.features.push(req.body.epicView);
@@ -182,7 +175,7 @@ async function update(req, res) {
         req.body.carCamping = !!req.body.carCamping;
 
 
-        //  related hikes
+        //  related hikes setup
         let user = req.user;
         const allHikes = await Hike.find({});
         const allBackpacks = await Backpack.find({});
@@ -193,8 +186,6 @@ async function update(req, res) {
 
         // let userHikes = [];
         allBackpacks.forEach((b) => {
-
-            console.log(b.userId, "b.userId <-----------", stringId, "<-------- stringId")
             if(b.userId === stringId) {
                 userAdventures.push(b);
             }
@@ -209,32 +200,25 @@ async function update(req, res) {
 
         // search though keys for related hike key
         let bodyKeys = Object.keys(req.body);
-        console.log(bodyKeys, "bodyKeys update <-------------------")
         let relatedArray = [];
         
         userAdventures.forEach((a) => {
             let aIdString = a._id.toString();
-            console.log(relatedArray, "relatedArray-------------------%%%%%%%%");
-
             if(bodyKeys.includes(aIdString)) relatedArray.push(req.body[a._id]);
 
         });
 
+        // related adventures becomes an array of matched user adventures 
         req.body.relatedAdventures = relatedArray;
-        console.log(req.body.relatedAdventures, "req.body.relatedAdventures");
         
 
         // add req.body to model object
         for (const key in req.body) {
-            console.log(key, "<=-=-=-=-=-=-=------key----=-=--=-=-=-");
             backpackObj[key] = req.body[key];
         }
-        console.log(req.body, "req.body <----------- bp update")
-        console.log(backpackObj, "backpackObj ---- ----- update")
         await backpackObj.save();
         res.redirect(`/adventures/backpacking/${req.params.id}`);
     } catch (err) {
-        console.log("update error");
         res.send(err);
     }
 }
