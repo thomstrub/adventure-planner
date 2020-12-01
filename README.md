@@ -1,4 +1,4 @@
-# Adventure Planner
+![Adventure Planner](public/images/Project-Screenshots/title.png)  
 
 Plan a an adventure, or find an adventure that you already planned. Plan your adventures in the winter and don't waste time during the summer.
 
@@ -23,7 +23,8 @@ This project was planned out using [Trello][2] to list out user stories, progres
 
 #### Wireframes
 ----
-Project wireframs were sketched out using [Moqups][3] for basic page rendering.
+Project wireframs were sketched out using [Moqups][3] for basic page rendering.  
+![Wire]
 
 
 #### ER Diagram
@@ -33,17 +34,19 @@ This project's ER diagram was sketched out [here][4] using Lucid Chart.
 ## Screenshots
 ---
 Landing Page  
-![Landing](public/images/Project-Screenshots/login.png)
+![Landing](public/images/Project-Screenshots/login.png)  
 OAuth Sign-In  
-![Oauth](public/images/Project-Screenshots/oauth.png)
+![Oauth](public/images/Project-Screenshots/oauth.png)  
 Dashboard  
-![Dashboard](public/images/Project-Screenshots/erd.png)
+![Dashboard](public/images/Project-Screenshots/dashboard.png)  
 Index Page  
-![Index](public/images/Project-Screenshots/index.png)
+![Index](public/images/Project-Screenshots/index.png)  
 Create New Adventure    
-![Create](public/images/Project-Screenshots/new.png)
+![Create](public/images/Project-Screenshots/new.png)  
+Edit an Adventure  
+![Edit](public/images/Project-Screenshots/edit.png)
 Show Page  
-![Show](public/images/Project-Screenshots/show.png)
+![Show](public/images/Project-Screenshots/show.png)  
 
 ## Technologies Used
 ---
